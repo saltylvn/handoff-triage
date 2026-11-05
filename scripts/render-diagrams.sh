@@ -1,15 +1,10 @@
 #!/bin/sh
-# Rebuilds docs/assets from the Mermaid sources in docs/diagrams.
-# Usage: sh scripts/render-diagrams.sh [puppeteer-config.json]
+# Rebuilds docs/assets from the two drawing scripts. PNGs are taken with headless Chrome.
 set -eu
 cd "$(dirname "$0")/.."
-config=""
-[ $# -ge 1 ] && config="-p $1"
-for source in docs/diagrams/*.mmd; do
-  name=$(basename "$source" .mmd)
-  for format in svg png; do
-    # shellcheck disable=SC2086
-    npx -y @mermaid-js/mermaid-cli -q -i "$source" -o "docs/assets/$name.$format" \
-      -c docs/diagrams/mermaid.config.json -b white -s 2 $config
-  done
+chrome="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+{ uv run python scripts/draw_diagrams.py; uv run python scripts/draw_system_map.py; } | while read -r name size; do
+  "$chrome" --headless --disable-gpu --force-device-scale-factor=2 --window-size="$size" \
+    --hide-scrollbars --screenshot="$PWD/docs/assets/$name.png" \
+    "file://$PWD/docs/assets/$name.svg" 2>/dev/null
 done

@@ -53,19 +53,17 @@ def sweep(rows: list[Scored]) -> list[dict[str, float | int | None]]:
 
 
 def choose_threshold(dev: list[Scored], min_precision: float = 0.95) -> float | None:
-    """The lowest threshold meeting the bar with no sensitive item handled alone. Lowest, because
-    that automates the most. Chosen on dev so the test score stays honest."""
+    """The threshold automating the most while meeting the bar with no sensitive item handled
+    alone. On a tie, the highest: same behavior on dev, with more margin. Chosen on dev so the test
+    score stays honest."""
+    best: dict[str, float | int | None] | None = None
     for row in sweep(dev):
         precision = row["auto_precision"]
-        threshold = row["threshold"]
-        if (
-            precision is not None
-            and precision >= min_precision
-            and row["sensitive_auto_handled"] == 0
-            and threshold is not None
-        ):
-            return float(threshold)
-    return None
+        if precision is None or precision < min_precision or row["sensitive_auto_handled"] != 0:
+            continue
+        if best is None or row["auto_count"] == best["auto_count"]:
+            best = row
+    return float(best["threshold"] or 0.0) if best else None
 
 
 def summarize(rows: list[Scored]) -> dict[str, object]:

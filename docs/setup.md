@@ -74,7 +74,7 @@ uv run python -m triage.trace ITEM_ID
 
 ## 7. Evals
 
-Takes about 12 minutes at the default pace, and resumes if interrupted.
+Tune on the dev split (about 4 minutes). Run `--split all` (about 12 minutes) only once the prompt is final. Runs resume if interrupted.
 
 ```bash
 uv run --env-file .env.local python -m triage.evals.run

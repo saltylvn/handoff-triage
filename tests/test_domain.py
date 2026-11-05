@@ -24,7 +24,7 @@ def enrichment(age: int | None = 4000, stage: str | None = None) -> Enrichment:
 @pytest.mark.parametrize(
     ("overrides", "reason"),
     [
-        ({"confidence": 0.79}, "low_confidence"),
+        ({"confidence": 0.89}, "low_confidence"),
         ({"sensitive": True}, "sensitive"),
         ({"team_size": 500}, "high_value"),
         ({"budget_usd": 50_000}, "high_value"),
@@ -37,7 +37,7 @@ def test_risky_triage_needs_a_person(overrides: dict[str, object], reason: str) 
 
 
 def test_threshold_is_inclusive() -> None:
-    assert not decide_route(triage_of(confidence=0.8), enrichment(), Policy()).needs_human
+    assert not decide_route(triage_of(confidence=0.9), enrichment(), Policy()).needs_human
 
 
 def test_new_domain_flags_sales_only() -> None:

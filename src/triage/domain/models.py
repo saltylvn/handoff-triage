@@ -42,7 +42,8 @@ class Usage(BaseModel):
     input_tokens: int
     output_tokens: int
     cost_usd_equivalent: float  # what these tokens would cost on the paid tier
-    latency_ms: float
+    latency_ms: float  # the successful model call only
+    total_ms: float = 0.0  # includes retries and rate-limit waits
     attempts: int
 
 

@@ -6,11 +6,17 @@ A multi-system workflow agent for a B2B software company's contact form. An LLM 
 
 **The goal is safe automation:** act alone only when the case is low-risk, ask a person otherwise, and never create a duplicate, even when things fail.
 
-> **Status: in progress.** The pipeline, tests and fault-injection demo run today against fake services. Live HubSpot and Slack runs, eval results and the n8n version are next. No results are claimed until they've been measured.
+> **Status: in progress.** The Gemini classifier has been measured against the live API. The rest of the pipeline runs against fake services in tests and the demo. Live HubSpot and Slack runs and the n8n version are next.
+
+![How it works: a message arrives, AI reads it, rules decide, then it is handled alone or a person approves](docs/assets/flow.png)
 
 ## Architecture
 
-![System architecture](docs/assets/architecture.png)
+![Architecture: contact form, API, database and worker, connected to Gemini, RDAP, HubSpot and Slack](docs/assets/architecture.png)
+
+### Full system map
+
+![Full system map: every step from the contact form through the API, database and worker, plus Gemini, RDAP, HubSpot, Slack and the approver](docs/assets/system-map.png)
 
 ## Try it (no accounts needed)
 
@@ -24,11 +30,11 @@ uv sync
 uv run python -m triage.demo
 ```
 
-Connecting the real services: [docs/setup.md](docs/setup.md). How it all works: [docs/walkthrough.md](docs/walkthrough.md).
+Connecting the real services: [docs/setup.md](docs/setup.md). How it all works, with full technical diagrams: [docs/walkthrough.md](docs/walkthrough.md).
 
 ## What makes it reliable
 
-![Five layers against duplicates](docs/assets/no-duplicates.png)
+![Five failures and how the system responds to each](docs/assets/reliability.png)
 
 - **OAuth:** HubSpot authorization-code flow with automatic refresh; tokens encrypted at rest.
 - **Webhooks:** signature and timestamp checks on inbound requests and Slack clicks.
@@ -36,28 +42,62 @@ Connecting the real services: [docs/setup.md](docs/setup.md). How it all works: 
 - **Audit log:** every decision recorded in a table the database itself keeps append-only.
 - **Prompt-injection defense:** the model returns validated fields, and plain code decides what happens.
 
-### The approval flow
+### The approval step
 
-![Approval sequence](docs/assets/approval-sequence.png)
+![Rules flag an item, Slack asks, a person decides, HubSpot is updated](docs/assets/approval.png)
 
-### Item lifecycle
+### Message status
 
-![Item lifecycle](docs/assets/item-lifecycle.png)
+![Every status a message can have](docs/assets/lifecycle.png)
 
 ## Evaluation
 
 100 labeled synthetic examples, split into 30 for tuning and 70 held out for reporting. The harness measures precision of auto-handled items, automation rate, sensitive items handled without a person, category and field accuracy, latency, and cost per item. Design: [decision 0008](docs/decisions/0008-eval-design.md).
 
-**Results:** not yet run.
+### Results
+
+Measured on the 70 held-out messages with `gemini-3.5-flash-lite`. The 0.90 threshold was chosen using only the 30 tuning messages.
+
+| Measure | Result |
+|---|---|
+| Handled without a person | **88.6%** (62 of 70) |
+| Correct when acting alone | **96.8%** (60 of 62; roughly 89–99% with this sample size) |
+| Sensitive messages handled without a person | **0** (all 4 were flagged) |
+| Category accuracy, all messages | 95.7% |
+| Urgency accuracy | 88.6% |
+| Company, team size, budget extraction | 100%, 97.1%, 100% |
+| Prompt-injection attempts classified correctly | 3 of 3, no inflated values |
+| Invalid model replies | 0 of 70 |
+| Model latency | 1.0 s median, 7.5 s at the 95th percentile |
+| Cost per item | $0 on the free tier; about $0.00033 at paid rates |
+
+![Automation rate and accuracy at each confidence threshold](docs/assets/threshold-tradeoff.png)
+
+| Threshold | Handled alone | Correct when alone |
+|---|---|---|
+| 0.80 | 92.9% | 95.4% |
+| 0.85 | 90.0% | 96.8% |
+| **0.90 (chosen)** | **88.6%** | **96.8%** |
+| 0.95 | 80.0% | 98.2% |
+
+**How to read this:**
+
+- **Small, synthetic sample.** I wrote these examples and labels with AI assistance, so treat the numbers as indicative. Real traffic would be needed for a production claim.
+- **Classifier only.** The rate counts the confidence and sensitive checks. The live router also flags high-value deals, new domains and urgent customers, so it would handle somewhat less alone.
+- **Confidence is inflated.** The model rated 95 of 100 messages at 0.90 or higher, which is why the threshold is measured and not assumed.
+- **Answers can vary.** Temperature is 0, yet tuning-set accuracy moved between 96.7% and 93.3% across two runs of the same prompt.
+
+Raw answers and full metrics: [eval/results](eval/results).
 
 ## Roadmap
 
 - [x] Durable queue, step ledger, audit log
 - [x] Routing policy and human approval flow
-- [x] HubSpot, Slack, Gemini and RDAP adapters, tested against simulated responses
+- [x] HubSpot, Slack and RDAP adapters, tested against simulated responses
+- [x] Gemini adapter, tested against the live API
 - [x] Fault-injection tests and demo
 - [x] 100-example eval set and harness
-- [ ] First eval run and published results
+- [x] First eval run and published results
 - [ ] Live run against HubSpot and Slack test accounts
 - [ ] n8n version and written comparison
 - [ ] Alerts on dead-lettered items

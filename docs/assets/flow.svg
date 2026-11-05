@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1170" height="470" viewBox="0 0 1170 470" role="img" aria-label="A message arrives, AI reads it, rules decide, then it is handled or a person approves it">
+<defs><pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#1b1b21"/></pattern>
+<marker id="grey" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M1 1L9 5L1 9" fill="none" stroke="#6e6e78" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="rose" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M1 1L9 5L1 9" fill="none" stroke="#e879a3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<rect width="1170" height="470" fill="#0a0a0e"/>
+<rect width="1170" height="470" fill="url(#dots)"/>
+<circle cx="44" cy="51" r="3.5" fill="#e879a3"/>
+<text x="58" y="56" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="#aaa6a2" letter-spacing="2">HOW IT WORKS</text>
+<text x="40" y="104" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="36" fill="#f5f1eb" font-weight="600" letter-spacing="-0.8">Automates the routine. Asks a person about the rest.</text>
+<text x="1130" y="446" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" fill="#aaa6a2" text-anchor="end" letter-spacing="0.4">fig. 01 — the workflow</text>
+<path d="M 220 291.0 C 244 291.0, 241 291.0, 265 291.0" fill="none" stroke="#6e6e78" stroke-width="1.8" stroke-linecap="round" marker-end="url(#grey)"/>
+<path d="M 445 291.0 C 469 291.0, 466 291.0, 490 291.0" fill="none" stroke="#6e6e78" stroke-width="1.8" stroke-linecap="round" marker-end="url(#grey)"/>
+<path d="M 670 291.0 C 694 291.0, 691 216.0, 715 216.0" fill="none" stroke="#6e6e78" stroke-width="1.8" stroke-linecap="round" marker-end="url(#grey)"/>
+<path d="M 670 291.0 C 694 291.0, 691 366.0, 715 366.0" fill="none" stroke="#e879a3" stroke-width="1.8" stroke-linecap="round" marker-end="url(#rose)"/>
+<path d="M 895 216.0 C 922.5 216.0, 922.5 291.0, 950 291.0" fill="none" stroke="#6e6e78" stroke-width="1.8" stroke-linecap="round" marker-end="url(#grey)"/>
+<path d="M 895 366.0 C 922.5 366.0, 922.5 291.0, 950 291.0" fill="none" stroke="#e879a3" stroke-width="1.8" stroke-linecap="round" marker-end="url(#rose)"/>
+<rect x="40" y="245" width="180" height="92" rx="14" fill="#131318" stroke="#2e2e36" stroke-width="1.5"/>
+<text x="58" y="288.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#f5f1eb" font-weight="600" letter-spacing="-0.2">Message arrives</text>
+<text x="58" y="311.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#aaa6a2">contact form</text>
+<rect x="265" y="245" width="180" height="92" rx="14" fill="#131318" stroke="#2e2e36" stroke-width="1.5"/>
+<text x="283" y="288.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#f5f1eb" font-weight="600" letter-spacing="-0.2">AI reads it</text>
+<text x="283" y="311.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#aaa6a2">type and details</text>
+<rect x="490" y="245" width="180" height="92" rx="14" fill="#e879a3" stroke="#e879a3" stroke-width="1.5"/>
+<text x="508" y="288.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#0a0a0e" font-weight="600" letter-spacing="-0.2">Rules decide</text>
+<text x="508" y="311.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#0a0a0e">safe to act alone?</text>
+<rect x="715" y="170" width="180" height="92" rx="14" fill="#131318" stroke="#2e2e36" stroke-width="1.5"/>
+<text x="733" y="213.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#f5f1eb" font-weight="600" letter-spacing="-0.2">Handled alone</text>
+<text x="733" y="236.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#aaa6a2">low risk</text>
+<rect x="715" y="320" width="180" height="92" rx="14" fill="#e879a3" stroke="#e879a3" stroke-width="1.5"/>
+<text x="733" y="363.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#0a0a0e" font-weight="600" letter-spacing="-0.2">Person approves</text>
+<text x="733" y="386.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#0a0a0e">unsure or risky</text>
+<rect x="950" y="245" width="180" height="92" rx="14" fill="#131318" stroke="#2e2e36" stroke-width="1.5"/>
+<text x="968" y="288.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#f5f1eb" font-weight="600" letter-spacing="-0.2">Systems updated</text>
+<text x="968" y="311.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#aaa6a2">HubSpot and Slack</text>
+<circle cx="220" cy="291.0" r="4" fill="#0a0a0e" stroke="#6e6e78" stroke-width="1.6"/>
+<circle cx="445" cy="291.0" r="4" fill="#0a0a0e" stroke="#6e6e78" stroke-width="1.6"/>
+<circle cx="670" cy="291.0" r="4" fill="#0a0a0e" stroke="#6e6e78" stroke-width="1.6"/>
+<circle cx="895" cy="216.0" r="4" fill="#0a0a0e" stroke="#6e6e78" stroke-width="1.6"/>
+<circle cx="895" cy="366.0" r="4" fill="#0a0a0e" stroke="#6e6e78" stroke-width="1.6"/>
+</svg>

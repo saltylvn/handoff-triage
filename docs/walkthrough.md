@@ -30,9 +30,74 @@ A software company's contact form receives sales leads, support requests, partne
 | Idempotency | [decision 0003](decisions/0003-layered-idempotency.md) | Five layers |
 | Logging | `migrations/0001_init.sql` | Append-only by trigger |
 
+## Full technical detail
+
+The README's images are simplified on purpose. These show every step and state.
+
+<details>
+<summary>Every step of an approval</summary>
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant F as Contact form
+  participant A as API
+  participant D as Database
+  participant W as Worker
+  participant G as Gemini
+  participant S as Slack
+  participant P as Approver
+  participant H as HubSpot
+  F->>A: POST /webhooks/inbound (signed)
+  A->>D: Save item, unique idempotency key
+  A-->>F: 202 Accepted
+  W->>D: Claim item with a lease
+  W->>G: Classify and extract
+  G-->>W: JSON, validated against schema
+  W->>D: Log decision: confidence below threshold
+  W->>S: Post summary with Approve and Reject
+  W->>D: Status: awaiting_approval
+  Note over W,H: Nothing has been written to HubSpot yet
+  P->>S: Clicks Approve
+  S->>A: POST /slack/interactions (signed)
+  A->>A: Check signature and approver list
+  A->>D: Compare-and-set: first click wins, log who
+  A-->>S: 200 within 3 seconds
+  W->>D: Claim item again, finished steps are skipped
+  W->>H: Upsert contact by email
+  W->>S: Post final summary
+  W->>D: Status: done, log completed
+```
+
+</details>
+
+<details>
+<summary>Every status change</summary>
+
+```mermaid
+stateDiagram-v2
+  direction LR
+  [*] --> queued: webhook accepted
+  queued --> processing: worker claims, lease starts
+  processing --> queued: retryable failure, waits with backoff
+  processing --> processing: lease expired, worker died
+  processing --> awaiting_approval: unsure or risky
+  awaiting_approval --> queued: approved
+  awaiting_approval --> rejected: rejected
+  processing --> done: CRM and Slack finished
+  processing --> discarded: confident spam
+  processing --> failed: permanent error or attempts used up
+  done --> [*]
+  discarded --> [*]
+  rejected --> [*]
+  failed --> [*]
+```
+
+</details>
+
 ## Questions an interviewer may ask
 
-- **Why not trust the model's confidence?** It's self-reported. We measure which threshold is actually safe on dev data and confirm on test data.
+- **Why not trust the model's confidence?** It's self-reported and inflated: the model rated 95 of 100 messages at 0.90 or higher. I chose the threshold on dev data and confirmed it on held-out test data.
 - **What if HubSpot writes the contact but the reply is lost?** The retry repeats the upsert, which updates the same contact.
 - **What about prompt injection?** The model can only return validated fields. Code decides actions, and injections are in the eval set.
 - **What would you change for production?** Postgres with multiple workers, alerts on dead-lettered items, a data-retention policy, a paid LLM tier, and per-customer credentials.

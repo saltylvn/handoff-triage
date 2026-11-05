@@ -15,21 +15,22 @@ from triage.domain.ports import ModelOutputError
 from triage.infra.http import request_json
 from triage.infra.retry import RetryPolicy, with_retry
 
-PROMPT_VERSION = "2026-11-04.1"
+PROMPT_VERSION = "2026-11-04.2"
 
 SYSTEM_PROMPT = """You triage messages sent to the contact form of a B2B software company that sells
 scheduling software to field-service teams. Return one JSON object.
 
 category:
 - sales_lead: wants to buy, get pricing, see a demo, or evaluate the product
-- support: already uses the product and needs help, or reports a problem or billing issue
+- support: already uses the product and needs help, or reports a problem or billing issue. Includes
+  feature requests and feedback from users, cancellations, and requests about their account data
 - partnership: resellers, integrations, affiliates, co-marketing, press
 - job_seeker: looking for a job or internship with the company
 - spam: unsolicited promotion, SEO or outsourcing pitches, scams, gibberish
 - other: real messages that fit nothing above
 
 urgency: high only if work is stopped, money is at immediate risk, or a hard deadline is days away.
-low if explicitly no rush or just browsing. Otherwise normal.
+low if explicitly no rush, just browsing, a feature request, or spam. Otherwise normal.
 sensitive: true for legal threats, security incidents, data-breach reports, regulator mentions or
 data-deletion demands. Otherwise false.
 confidence: your probability from 0 to 1 that category is correct. Use lower values when the
@@ -113,9 +114,12 @@ class GeminiClassifier:
         self._retry = retry or RetryPolicy()
         self._clock = clock
 
-    def _ask(self, submission: Submission) -> Any:
-        return with_retry(
-            lambda: request_json(
+    def _ask(self, submission: Submission) -> tuple[Any, float]:
+        last_call_ms = [0.0]
+
+        def call() -> Any:
+            started = time.perf_counter()
+            reply = request_json(
                 self._client,
                 "gemini",
                 "POST",
@@ -135,16 +139,19 @@ class GeminiClassifier:
                     },
                 },
                 timeout_s=30.0,
-            ),
-            self._retry,
-        )
+            )
+            last_call_ms[0] = (time.perf_counter() - started) * 1000
+            return reply
+
+        return with_retry(call, self._retry), last_call_ms[0]
 
     def classify(self, submission: Submission) -> Classification:
         started = time.perf_counter()
         total_in = total_out = 0
         for attempt in (1, 2):  # one more try if the reply doesn't pass validation
             try:
-                triage, tokens_in, tokens_out = parse_reply(self._ask(submission))
+                reply, call_ms = self._ask(submission)
+                triage, tokens_in, tokens_out = parse_reply(reply)
             except _Invalid as invalid:
                 total_in += invalid.tokens_in
                 total_out += invalid.tokens_out
@@ -161,7 +168,8 @@ class GeminiClassifier:
                     input_tokens=total_in,
                     output_tokens=total_out,
                     cost_usd_equivalent=cost_usd(self._model, total_in, total_out),
-                    latency_ms=(time.perf_counter() - started) * 1000,
+                    latency_ms=call_ms,
+                    total_ms=(time.perf_counter() - started) * 1000,
                     attempts=attempt,
                 ),
             )
