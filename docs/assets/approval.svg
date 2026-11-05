@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1170" height="420" viewBox="0 0 1170 420" role="img" aria-label="Rules flag an item, Slack asks a person, the person clicks approve, HubSpot is updated">
+<defs><pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#1b1b21"/></pattern>
+<marker id="grey" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M1 1L9 5L1 9" fill="none" stroke="#6e6e78" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="rose" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M1 1L9 5L1 9" fill="none" stroke="#e879a3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<rect width="1170" height="420" fill="#0a0a0e"/>
+<rect width="1170" height="420" fill="url(#dots)"/>
+<circle cx="44" cy="51" r="3.5" fill="#e879a3"/>
+<text x="58" y="56" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="#aaa6a2" letter-spacing="2">HUMAN APPROVAL</text>
+<text x="40" y="104" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="36" fill="#f5f1eb" font-weight="600" letter-spacing="-0.8">Flagged items write nothing until a person says yes.</text>
+<text x="1130" y="396" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" fill="#aaa6a2" text-anchor="end" letter-spacing="0.4">fig. 04 — the approval step</text>
+<path d="M 245 231.0 C 290.0 231.0, 290.0 231.0, 335 231.0" fill="none" stroke="#6e6e78" stroke-width="1.8" stroke-linecap="round" marker-end="url(#grey)"/>
+<path d="M 540 231.0 C 585.0 231.0, 585.0 231.0, 630 231.0" fill="none" stroke="#e879a3" stroke-width="1.8" stroke-linecap="round" marker-end="url(#rose)"/>
+<path d="M 835 231.0 C 880.0 231.0, 880.0 231.0, 925 231.0" fill="none" stroke="#6e6e78" stroke-width="1.8" stroke-linecap="round" marker-end="url(#grey)"/>
+<rect x="40" y="185" width="205" height="92" rx="14" fill="#131318" stroke="#2e2e36" stroke-width="1.5"/>
+<text x="58" y="228.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#f5f1eb" font-weight="600" letter-spacing="-0.2">Rules flag it</text>
+<text x="58" y="251.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#aaa6a2">unsure or risky</text>
+<rect x="335" y="185" width="205" height="92" rx="14" fill="#131318" stroke="#2e2e36" stroke-width="1.5"/>
+<text x="353" y="228.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#f5f1eb" font-weight="600" letter-spacing="-0.2">Slack asks</text>
+<text x="353" y="251.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#aaa6a2">approve or reject</text>
+<rect x="630" y="185" width="205" height="92" rx="14" fill="#e879a3" stroke="#e879a3" stroke-width="1.5"/>
+<text x="648" y="228.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#0a0a0e" font-weight="600" letter-spacing="-0.2">A person decides</text>
+<text x="648" y="251.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#0a0a0e">only listed approvers</text>
+<rect x="925" y="185" width="205" height="92" rx="14" fill="#131318" stroke="#2e2e36" stroke-width="1.5"/>
+<text x="943" y="228.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#f5f1eb" font-weight="600" letter-spacing="-0.2">HubSpot updated</text>
+<text x="943" y="251.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#aaa6a2">once, and logged</text>
+<circle cx="245" cy="231.0" r="4" fill="#0a0a0e" stroke="#6e6e78" stroke-width="1.6"/>
+<circle cx="540" cy="231.0" r="4" fill="#0a0a0e" stroke="#6e6e78" stroke-width="1.6"/>
+<circle cx="835" cy="231.0" r="4" fill="#0a0a0e" stroke="#6e6e78" stroke-width="1.6"/>
+<rect x="626.4" y="312" width="211.20000000000002" height="26" rx="13" fill="#0a0a0e" stroke="#2e2e36"/>
+<text x="732" y="329.5" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#f5f1eb" text-anchor="middle">reject: nothing is written</text>
+</svg>

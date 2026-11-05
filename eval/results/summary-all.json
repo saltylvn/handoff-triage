@@ -1,0 +1,261 @@
+{
+  "model": "gemini-3.5-flash-lite",
+  "prompt_version": "2026-11-04.2",
+  "threshold_chosen_on_dev": 0.9,
+  "test_at_chosen_threshold": {
+    "threshold": 0.9,
+    "auto_count": 62,
+    "auto_rate": 0.8857142857142857,
+    "auto_precision": 0.967741935483871,
+    "sensitive_auto_handled": 0
+  },
+  "dev": {
+    "items": 30,
+    "invalid_answers": 0,
+    "category_accuracy": 0.9333333333333333,
+    "urgency_accuracy": 0.9,
+    "sensitive_recall": 1.0,
+    "company_accuracy": 1.0,
+    "team_size_accuracy": 1.0,
+    "budget_accuracy": 1.0,
+    "per_category": {
+      "job_seeker": {
+        "support": 2,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "other": {
+        "support": 4,
+        "precision": 1.0,
+        "recall": 0.5
+      },
+      "partnership": {
+        "support": 3,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "sales_lead": {
+        "support": 9,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "spam": {
+        "support": 4,
+        "precision": 0.8,
+        "recall": 1.0
+      },
+      "support": {
+        "support": 8,
+        "precision": 0.8888888888888888,
+        "recall": 1.0
+      }
+    },
+    "confusions": {
+      "other -> spam": 1,
+      "other -> support": 1
+    },
+    "latency_ms_p50": 974.5030835038051,
+    "latency_ms_p95": 6793.442833004519,
+    "cost_usd_per_item_paid_equivalent": 0.0003246066666666667,
+    "cost_usd_actual_free_tier": 0.0,
+    "input_tokens_mean": 407.3,
+    "output_tokens_mean": 80.96666666666667,
+    "threshold_sweep": [
+      {
+        "threshold": 0.5,
+        "auto_count": 28,
+        "auto_rate": 0.9333333333333333,
+        "auto_precision": 0.9642857142857143,
+        "sensitive_auto_handled": 0
+      },
+      {
+        "threshold": 0.55,
+        "auto_count": 28,
+        "auto_rate": 0.9333333333333333,
+        "auto_precision": 0.9642857142857143,
+        "sensitive_auto_handled": 0
+      },
+      {
+        "threshold": 0.6,
+        "auto_count": 28,
+        "auto_rate": 0.9333333333333333,
+        "auto_precision": 0.9642857142857143,
+        "sensitive_auto_handled": 0
+      },
+      {
+        "threshold": 0.65,
+        "auto_count": 28,
+        "auto_rate": 0.9333333333333333,
+        "auto_precision": 0.9642857142857143,
+        "sensitive_auto_handled": 0
+      },
+      {
+        "threshold": 0.7,
+        "auto_count": 28,
+        "auto_rate": 0.9333333333333333,
+        "auto_precision": 0.9642857142857143,
+        "sensitive_auto_handled": 0
+      },
+      {
+        "threshold": 0.75,
+        "auto_count": 28,
+        "auto_rate": 0.9333333333333333,
+        "auto_precision": 0.9642857142857143,
+        "sensitive_auto_handled": 0
+      },
+      {
+        "threshold": 0.8,
+        "auto_count": 28,
+        "auto_rate": 0.9333333333333333,
+        "auto_precision": 0.9642857142857143,
+        "sensitive_auto_handled": 0
+      },
+      {
+        "threshold": 0.85,
+        "auto_count": 28,
+        "auto_rate": 0.9333333333333333,
+        "auto_precision": 0.9642857142857143,
+        "sensitive_auto_handled": 0
+      },
+      {
+        "threshold": 0.9,
+        "auto_count": 28,
+        "auto_rate": 0.9333333333333333,
+        "auto_precision": 0.9642857142857143,
+        "sensitive_auto_handled": 0
+      },
+      {
+        "threshold": 0.95,
+        "auto_count": 24,
+        "auto_rate": 0.8,
+        "auto_precision": 0.9583333333333334,
+        "sensitive_auto_handled": 0
+      }
+    ]
+  },
+  "test": {
+    "items": 70,
+    "invalid_answers": 0,
+    "category_accuracy": 0.9571428571428572,
+    "urgency_accuracy": 0.8857142857142857,
+    "sensitive_recall": 1.0,
+    "company_accuracy": 1.0,
+    "team_size_accuracy": 0.9714285714285714,
+    "budget_accuracy": 1.0,
+    "per_category": {
+      "job_seeker": {
+        "support": 5,
+        "precision": 1.0,
+        "recall": 0.8
+      },
+      "other": {
+        "support": 11,
+        "precision": 1.0,
+        "recall": 0.9090909090909091
+      },
+      "partnership": {
+        "support": 7,
+        "precision": 0.7777777777777778,
+        "recall": 1.0
+      },
+      "sales_lead": {
+        "support": 21,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "spam": {
+        "support": 10,
+        "precision": 1.0,
+        "recall": 0.9
+      },
+      "support": {
+        "support": 16,
+        "precision": 0.9411764705882353,
+        "recall": 1.0
+      }
+    },
+    "confusions": {
+      "spam -> partnership": 1,
+      "job_seeker -> partnership": 1,
+      "other -> support": 1
+    },
+    "latency_ms_p50": 1013.4040625125635,
+    "latency_ms_p95": 7490.181625005789,
+    "cost_usd_per_item_paid_equivalent": 0.0003323985714285714,
+    "cost_usd_actual_free_tier": 0.0,
+    "input_tokens_mean": 407.4,
+    "output_tokens_mean": 84.07142857142857,
+    "threshold_sweep": [
+      {
+        "threshold": 0.5,
+        "auto_count": 66,
+        "auto_rate": 0.9428571428571428,
+        "auto_precision": 0.9545454545454546,
+        "sensitive_auto_handled": 0
+      },
+      {
+        "threshold": 0.55,
+        "auto_count": 65,
+        "auto_rate": 0.9285714285714286,
+        "auto_precision": 0.9538461538461539,
+        "sensitive_auto_handled": 0
+      },
+      {
+        "threshold": 0.6,
+        "auto_count": 65,
+        "auto_rate": 0.9285714285714286,
+        "auto_precision": 0.9538461538461539,
+        "sensitive_auto_handled": 0
+      },
+      {
+        "threshold": 0.65,
+        "auto_count": 65,
+        "auto_rate": 0.9285714285714286,
+        "auto_precision": 0.9538461538461539,
+        "sensitive_auto_handled": 0
+      },
+      {
+        "threshold": 0.7,
+        "auto_count": 65,
+        "auto_rate": 0.9285714285714286,
+        "auto_precision": 0.9538461538461539,
+        "sensitive_auto_handled": 0
+      },
+      {
+        "threshold": 0.75,
+        "auto_count": 65,
+        "auto_rate": 0.9285714285714286,
+        "auto_precision": 0.9538461538461539,
+        "sensitive_auto_handled": 0
+      },
+      {
+        "threshold": 0.8,
+        "auto_count": 65,
+        "auto_rate": 0.9285714285714286,
+        "auto_precision": 0.9538461538461539,
+        "sensitive_auto_handled": 0
+      },
+      {
+        "threshold": 0.85,
+        "auto_count": 63,
+        "auto_rate": 0.9,
+        "auto_precision": 0.9682539682539683,
+        "sensitive_auto_handled": 0
+      },
+      {
+        "threshold": 0.9,
+        "auto_count": 62,
+        "auto_rate": 0.8857142857142857,
+        "auto_precision": 0.967741935483871,
+        "sensitive_auto_handled": 0
+      },
+      {
+        "threshold": 0.95,
+        "auto_count": 56,
+        "auto_rate": 0.8,
+        "auto_precision": 0.9821428571428571,
+        "sensitive_auto_handled": 0
+      }
+    ]
+  }
+}

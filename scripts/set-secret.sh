@@ -5,9 +5,13 @@
 set -eu
 
 name="${1:-}"
+# Names only: this catches a key pasted into the command by mistake, before it gets saved.
 case "$name" in
-  [A-Z]*) ;;
-  *) echo "Usage: sh scripts/set-secret.sh NAME   (for example GEMINI_API_KEY)"; exit 1 ;;
+  "" | [!A-Z]* | *[!A-Z0-9_]*)
+    echo "Usage: sh scripts/set-secret.sh NAME   (for example GEMINI_API_KEY)"
+    echo "Type the name here, not the secret. You'll be asked for the secret next."
+    exit 1
+    ;;
 esac
 
 cd "$(dirname "$0")/.."

@@ -8,7 +8,7 @@ from triage.domain.models import Enrichment, Plan, Route, Triage
 
 @dataclass(frozen=True)
 class Policy:
-    confidence_threshold: float = 0.8
+    confidence_threshold: float = 0.9  # measured: docs/decisions/0008
     high_value_team_size: int = 500
     high_value_budget_usd: float = 50_000
     new_domain_days: int = 30

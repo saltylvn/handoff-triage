@@ -18,7 +18,7 @@ class Settings(BaseSettings):
     slack_signing_secret: str = Field(min_length=1)
     slack_channel_id: str = Field(min_length=1)
     slack_approver_ids: str = ""
-    confidence_threshold: float = Field(default=0.8, ge=0, le=1)
+    confidence_threshold: float = Field(default=0.9, ge=0, le=1)
     database_path: str = "./triage.sqlite"
 
     @property

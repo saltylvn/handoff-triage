@@ -1,4 +1,6 @@
-"""python -m triage.evals.run [--split dev|test|all]
+"""python -m triage.evals.run [--split dev|all]
+
+Run dev while tuning. Run all only once the prompt is final, so the test split stays unseen.
 
 Paced for free-tier rate limits. Each answer is saved as it arrives, so an interrupted run resumes
 without spending quota twice. Answers are cached per model and prompt version."""
@@ -67,12 +69,15 @@ def collect(
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--min-interval", type=float, default=7.0, help="Seconds between calls")
+    parser.add_argument("--split", choices=["dev", "all"], default="dev")
     args = parser.parse_args()
     key = os.environ.get("GEMINI_API_KEY")
     if not key:
         raise SystemExit("Set GEMINI_API_KEY first: sh scripts/set-secret.sh GEMINI_API_KEY")
     model = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
     examples = load_dataset(ROOT / "dataset.jsonl")
+    if args.split == "dev":
+        examples = [e for e in examples if e.split == "dev"]
     RESULTS.mkdir(parents=True, exist_ok=True)
     classifier = GeminiClassifier(
         httpx.Client(), key, model, RetryPolicy(max_attempts=6, max_wait_s=90.0)
@@ -85,12 +90,12 @@ def main() -> None:
         "model": model,
         "prompt_version": PROMPT_VERSION,
         "threshold_chosen_on_dev": threshold,
-        "test_at_chosen_threshold": threshold_row(test, threshold) if threshold else None,
+        "test_at_chosen_threshold": threshold_row(test, threshold) if test and threshold else None,
         "dev": summarize(dev),
-        "test": summarize(test),
+        "test": summarize(test) if test else None,
     }
-    (RESULTS / "summary.json").write_text(json.dumps(report, indent=2) + "\n")
-    print(json.dumps({k: report[k] for k in list(report)[:4]}, indent=2))
+    (RESULTS / f"summary-{args.split}.json").write_text(json.dumps(report, indent=2) + "\n")
+    print(json.dumps(report, indent=2))
 
 
 if __name__ == "__main__":
