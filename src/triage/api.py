@@ -60,7 +60,7 @@ def create_app(
     approvers: frozenset[str],
     now: Callable[[], float],
 ) -> FastAPI:
-    app = FastAPI(title="Multi Agent Triage", docs_url=None, redoc_url=None, openapi_url=None)
+    app = FastAPI(title="Human-in-the-Loop Triage", docs_url=None, redoc_url=None, openapi_url=None)
 
     async def read_signed(request: Request, secret: str, ts_header: str, sig_header: str) -> bytes:
         declared = request.headers.get("content-length")

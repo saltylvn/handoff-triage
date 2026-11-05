@@ -1,6 +1,6 @@
-# Multi Agent Triage
+# Human-in-the-Loop Triage
 
-[![CI](https://github.com/saltylvn/multi_agent_triage/actions/workflows/ci.yml/badge.svg)](https://github.com/saltylvn/multi_agent_triage/actions/workflows/ci.yml)
+[![CI](https://github.com/saltylvn/human-in-the-loop-triage/actions/workflows/ci.yml/badge.svg)](https://github.com/saltylvn/human-in-the-loop-triage/actions/workflows/ci.yml)
 ![Python 3.13](https://img.shields.io/badge/python-3.13-blue)
 ![Strict mypy](https://img.shields.io/badge/mypy-strict-blue)
 ![Coverage 95%](https://img.shields.io/badge/coverage-95%25-brightgreen)
@@ -18,7 +18,7 @@ These are from synthetic test data, so [read the caveats](#evaluation). The work
 
 ![How it works: a message arrives, AI reads it, rules decide, then it is handled alone or a person approves](docs/assets/flow.png)
 
-> **On the name:** this is one LLM step inside a deterministic workflow across multiple systems, not a set of autonomous agents. That's deliberate, because fixed steps are easier to test, audit and trust.
+> **By design:** this is one LLM step inside a deterministic workflow, not a set of autonomous agents, because fixed steps are easier to test, audit and trust.
 
 ## Try it in one minute
 

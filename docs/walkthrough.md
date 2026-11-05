@@ -102,5 +102,5 @@ stateDiagram-v2
 - **What about prompt injection?** The model can only return validated fields. Code decides actions, and injections are in the eval set.
 - **What would you change for production?** Postgres with multiple workers, a hosted deployment, monitoring dashboards, a data-retention policy, a paid LLM tier, and per-customer credentials.
 - **What's the best bug you found?** While reviewing my own code, I found that the fast HTTP retry could post a Slack message twice if Slack failed after posting. Now only a 429 is retried on the spot, and anything else goes back to the queue, which searches for the earlier post first.
-- **Is this really multi-agent?** No. It's one LLM step inside a deterministic workflow, on purpose: predictable steps are easier to test and audit than agents choosing their own actions.
+- **Why not use multiple autonomous agents?** This job doesn't need them. One LLM step inside a deterministic workflow is easier to test and audit than agents choosing their own actions.
 - **When would you choose n8n over code?** n8n when a team needs to see and change the workflow itself, the logic is simple, and speed matters most. Code when the logic is complex or needs thorough tests, version control and precise control of failure handling, as this project does.
