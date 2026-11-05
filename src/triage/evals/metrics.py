@@ -4,7 +4,8 @@ from collections import Counter
 from dataclasses import dataclass
 from statistics import median
 
-from triage.domain.models import Triage, Usage
+from triage.domain.models import Enrichment, Triage, Usage
+from triage.domain.routing import Policy, decide_route
 from triage.evals.dataset import Example
 
 
@@ -45,6 +46,29 @@ def threshold_row(rows: list[Scored], threshold: float) -> dict[str, float | int
         "auto_rate": _rate(len(auto), len(rows)),
         "auto_precision": _rate(correct, len(auto)),
         "sensitive_auto_handled": missed,
+    }
+
+
+def router_row(rows: list[Scored], threshold: float) -> dict[str, float | int | None]:
+    """Replays the real routing rules, not just confidence. Assumes each sender is new and from an
+    established domain, because the labeled set has no enrichment data."""
+    neutral = Enrichment(
+        email_domain="unknown",
+        is_free_mail=False,
+        domain_age_days=None,
+        existing_contact=None,
+        degraded=[],
+    )
+    policy = Policy(confidence_threshold=threshold)
+    auto = [r for r in rows if r.triage and not decide_route(r.triage, neutral, policy).needs_human]
+    correct = sum(1 for r in auto if r.triage and r.triage.category == r.example.category)
+    return {
+        "threshold": threshold,
+        "auto_count": len(auto),
+        "auto_rate": _rate(len(auto), len(rows)),
+        "auto_correct": correct,
+        "auto_precision": _rate(correct, len(auto)),
+        "sensitive_auto_handled": sum(1 for r in auto if r.example.sensitive),
     }
 
 

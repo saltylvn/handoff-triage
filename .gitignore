@@ -14,3 +14,4 @@ hubspot.config.yaml
 .hsaccount
 archived.hubspot.config.yml
 .claude/
+.coverage

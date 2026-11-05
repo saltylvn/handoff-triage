@@ -18,7 +18,7 @@ from triage.adapters.gemini import PROMPT_VERSION, GeminiClassifier
 from triage.domain.models import Classification
 from triage.domain.ports import ModelOutputError
 from triage.evals.dataset import Example, load_dataset
-from triage.evals.metrics import Scored, choose_threshold, summarize, threshold_row
+from triage.evals.metrics import Scored, choose_threshold, router_row, summarize, threshold_row
 from triage.infra.retry import RetryPolicy
 
 ROOT = Path("eval")
@@ -91,6 +91,7 @@ def main() -> None:
         "prompt_version": PROMPT_VERSION,
         "threshold_chosen_on_dev": threshold,
         "test_at_chosen_threshold": threshold_row(test, threshold) if test and threshold else None,
+        "test_full_router": router_row(test, threshold) if test and threshold else None,
         "dev": summarize(dev),
         "test": summarize(test) if test else None,
     }

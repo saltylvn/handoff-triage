@@ -1,5 +1,5 @@
 [project]
-name = "inbound-triage-agent"
+name = "multi_agent_triage"
 version = "0.1.0"
 description = "Contact-us triage: LLM classification, enrichment, HubSpot, Slack, with human approval below a confidence threshold."
 requires-python = ">=3.13"
@@ -14,7 +14,7 @@ dependencies = [
 ]
 
 [dependency-groups]
-dev = ["mypy>=1.18", "pip-audit>=2.9", "pytest>=8.4", "ruff>=0.14"]
+dev = ["mypy>=1.18", "pip-audit>=2.9", "pytest>=8.4", "pytest-cov>=6", "ruff>=0.14"]
 
 [build-system]
 requires = ["hatchling"]
@@ -39,6 +39,21 @@ select = ["E", "F", "I", "B", "UP", "S", "SIM", "RUF"]
 strict = true
 files = ["src", "tests"]
 plugins = ["pydantic.mypy"]
+
+[tool.coverage.run]
+source = ["triage"]
+# Thin entry points that only start things, and the live eval runner.
+omit = [
+  "*/asgi.py",
+  "*/worker.py",
+  "*/connect_hubspot.py",
+  "*/trace.py",
+  "*/requeue.py",
+  "*/send_sample.py",
+  "*/demo.py",
+  "*/wiring.py",
+  "*/evals/run.py",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

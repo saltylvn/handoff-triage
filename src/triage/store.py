@@ -193,6 +193,18 @@ class Store:
             )
             self._log(conn, item_id, now, "dead_lettered", "system", {"error": error})
 
+    def requeue(self, item_id: str, actor: str, now: float) -> bool:
+        """Puts a failed item back in the queue. Finished steps stay skipped, so nothing repeats."""
+        with self._tx() as conn:
+            changed = conn.execute(
+                """UPDATE items SET status='queued', attempts=0, next_attempt_at=?, last_error=NULL,
+                   updated_at=? WHERE id=? AND status='failed'""",
+                (now, now, item_id),
+            ).rowcount
+            if changed:
+                self._log(conn, item_id, now, "requeued", actor, {})
+            return bool(changed)
+
     def resolve_approval(self, item_id: str, approved: bool, actor: str, now: float) -> bool:
         """Compare-and-set: only the first click wins, so a double-click can't act twice."""
         with self._tx() as conn:

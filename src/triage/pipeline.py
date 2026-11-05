@@ -1,6 +1,7 @@
 """The workflow as resumable steps. Each step's result is saved; a retry skips finished steps, so a
 crash at any point resumes where it stopped instead of repeating side effects."""
 
+import logging
 import random
 from collections.abc import Callable
 from dataclasses import dataclass
@@ -27,6 +28,7 @@ from triage.infra.http import HttpError
 from triage.infra.retry import backoff_s, is_retryable
 from triage.store import Store
 
+logger = logging.getLogger("triage.pipeline")
 MAX_ITEM_ATTEMPTS = 6
 LEASE_S = 180.0
 
@@ -239,6 +241,11 @@ def handle_failure(item: Item, error: Exception, deps: Deps) -> None:
         deps.store.retry_later(item.id, now + wait, label, now)
     else:
         deps.store.dead_letter(item.id, label, now)
+        try:
+            deps.chat.alert(item.id, label)
+        except Exception:
+            # The failure is already recorded, and an alert problem must not hide it.
+            logger.exception("Could not send the failure alert for %s", item.id)
 
 
 def run_once(deps: Deps) -> bool:

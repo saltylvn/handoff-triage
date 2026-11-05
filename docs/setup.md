@@ -77,6 +77,18 @@ Inspect any item's audit trail:
 uv run python -m triage.trace ITEM_ID
 ```
 
+To retry an item that failed, after fixing the cause (Slack also posts an alert with this command):
+
+```bash
+uv run python -m triage.requeue ITEM_ID
+```
+
+Or run the API and worker together in Docker:
+
+```bash
+docker compose up --build
+```
+
 ## 7. Evals
 
 Tune on the dev split (about 4 minutes). Run `--split all` (about 12 minutes) only once the prompt is final. Runs resume if interrupted.

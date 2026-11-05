@@ -27,6 +27,18 @@ jobs:
       - run: uv run ruff format --check .
       - run: uv run ruff check .
       - run: uv run mypy
-      - run: uv run pytest
+      - run: uv run pytest --cov --cov-report=term --cov-fail-under=90
       - name: End-to-end demo with fake services
         run: uv run python -m triage.demo
+      - name: Container builds and the API starts
+        # Placeholder settings only: this checks startup and migrations, and calls no outside service.
+        run: |
+          docker build -t multi-agent-triage .
+          docker run -d --name api -p 3000:3000 \
+            -e GEMINI_API_KEY=placeholder \
+            -e WEBHOOK_SECRET=placeholder-placeholder-placeholder-00 \
+            -e TOKEN_ENCRYPTION_KEY=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA= \
+            -e HUBSPOT_CLIENT_ID=placeholder -e HUBSPOT_CLIENT_SECRET=placeholder \
+            -e SLACK_BOT_TOKEN=placeholder -e SLACK_SIGNING_SECRET=placeholder \
+            -e SLACK_CHANNEL_ID=placeholder multi-agent-triage
+          curl --retry 15 --retry-delay 1 --retry-all-errors --fail --silent http://localhost:3000/health

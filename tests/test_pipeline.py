@@ -205,3 +205,31 @@ def test_repeated_outage_gives_up_visibly(world: World) -> None:
     assert status(world, item_id) == "failed"
     assert world.crm.upsert_calls == MAX_ITEM_ATTEMPTS
     assert "dead_lettered" in kinds(world, item_id)
+
+
+def test_failure_sends_one_alert_and_can_be_requeued(world: World) -> None:
+    world.crm.fail_upserts.append(HttpError("hubspot", 400))
+    item_id = submit(world)
+    drain(world)
+    assert status(world, item_id) == "failed"
+    assert len(world.chat.alerts) == 1
+    assert world.store.requeue(item_id, "cli", world.clock[0]) is True
+    assert world.store.requeue(item_id, "cli", world.clock[0]) is False  # no longer failed
+    drain(world)
+    assert status(world, item_id) == "done"
+    assert world.crm.upsert_calls == 2
+    assert "requeued" in kinds(world, item_id)
+
+
+def test_a_broken_alert_does_not_hide_the_failure(world: World) -> None:
+    world.chat.fail_alerts = True
+    world.crm.fail_upserts.append(HttpError("hubspot", 400))
+    item_id = submit(world)
+    drain(world)
+    assert status(world, item_id) == "failed"
+    assert "dead_lettered" in kinds(world, item_id)
+
+
+def test_requeue_ignores_items_that_did_not_fail(world: World) -> None:
+    item_id = submit(world)
+    assert world.store.requeue(item_id, "cli", world.clock[0]) is False

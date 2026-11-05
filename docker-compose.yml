@@ -1,0 +1,27 @@
+# Runs the API and worker as separate processes sharing one database volume.
+# Needs a filled-in .env.local (docs/setup.md). The API is only reachable from this machine.
+services:
+  api:
+    build: .
+    env_file: .env.local
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - triage-data:/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request as u; u.urlopen('http://127.0.0.1:3000/health')"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+  worker:
+    build: .
+    command: ["/app/.venv/bin/python", "-m", "triage.worker"]
+    env_file: .env.local
+    volumes:
+      - triage-data:/data
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  triage-data:

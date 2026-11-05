@@ -8,7 +8,7 @@
 1. **Unique idempotency key** on arrival: the sender's event ID, or a hash of normalized content.
 2. **Step ledger:** finished steps are skipped on retry.
 3. **HubSpot upsert keyed on email:** repeating it updates the same contact.
-4. **Tagged Slack messages:** Slack has no idempotency key, so each post carries the item ID in metadata, and a resumed step searches for it before posting.
+4. **Tagged Slack messages:** Slack has no idempotency key, so each post carries the item ID in metadata, and a resumed step searches for it before posting. A post is retried on the spot only after a 429, which proves nothing was posted. After a 5xx or timeout it may have landed, so the item returns to the queue and searches first.
 5. **Compare-and-set approval:** only the first click changes status.
 
 **Alternatives.** "Check whether it exists, then create" has a race between the two calls. Relying on the ledger alone fails when the external write succeeds and the reply is lost.

@@ -26,11 +26,9 @@ def build_auth(settings: Settings, client: httpx.Client, store: Store) -> HubSpo
 
 
 def build_deps(settings: Settings) -> tuple[Deps, HubSpotAuth]:
-    client = httpx.Client(
-        headers={"User-Agent": "inbound-triage-agent/0.1"}, follow_redirects=False
-    )
+    client = httpx.Client(headers={"User-Agent": "multi_agent_triage/0.1"}, follow_redirects=False)
     rdap_client = httpx.Client(
-        headers={"User-Agent": "inbound-triage-agent/0.1"}, follow_redirects=True
+        headers={"User-Agent": "multi_agent_triage/0.1"}, follow_redirects=True
     )  # rdap.org redirects to the registry for that domain
     store = Store(settings.database_path)
     auth = build_auth(settings, client, store)

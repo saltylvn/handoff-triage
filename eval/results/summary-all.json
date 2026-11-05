@@ -9,6 +9,14 @@
     "auto_precision": 0.967741935483871,
     "sensitive_auto_handled": 0
   },
+  "test_full_router": {
+    "threshold": 0.9,
+    "auto_count": 59,
+    "auto_rate": 0.8428571428571429,
+    "auto_correct": 57,
+    "auto_precision": 0.9661016949152542,
+    "sensitive_auto_handled": 0
+  },
   "dev": {
     "items": 30,
     "invalid_answers": 0,
