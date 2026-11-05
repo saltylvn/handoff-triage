@@ -6,7 +6,7 @@ A multi-system workflow agent for a B2B software company's contact form. An LLM 
 
 **The goal is safe automation:** act alone only when the case is low-risk, ask a person otherwise, and never create a duplicate, even when things fail.
 
-> **Status: in progress.** The workflow has run live on test accounts: real Gemini, RDAP, HubSpot over OAuth, and Slack, including a person clicking Approve. It runs on one Mac using a temporary tunnel, not as a deployed service. The n8n version is next.
+> **Status: complete.** The workflow has run live on test accounts: real Gemini, RDAP, HubSpot over OAuth, and Slack, including a person clicking Approve. It runs on one Mac using a temporary tunnel, not as a deployed service.
 
 ![How it works: a message arrives, AI reads it, rules decide, then it is handled alone or a person approves](docs/assets/flow.png)
 
@@ -110,7 +110,6 @@ Raw answers and full metrics: [eval/results](eval/results).
 - [x] 100-example eval set and harness
 - [x] First eval run and published results
 - [x] Live run against HubSpot and Slack test accounts: automatic path, webhook replay and human approval
-- [ ] n8n version and written comparison
 - [ ] Alerts on dead-lettered items
 
 ## Project layout
