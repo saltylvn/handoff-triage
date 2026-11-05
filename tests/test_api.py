@@ -147,3 +147,13 @@ def test_oauth_callback_exchanges_once(store: Store) -> None:
     assert client.get("/oauth/hubspot/callback", params=params).status_code == 200
     assert client.get("/oauth/hubspot/callback", params=params).status_code == 400
     assert auth.codes == ["c"]
+
+
+def test_slack_click_with_malformed_user_id_changes_nothing(store: Store) -> None:
+    client, chat, _ = app_for(store)
+    item_id = waiting_item(store)
+    assert click(client, item_id, user="<!channel>") == 200
+    item = store.get_item(item_id)
+    assert item is not None
+    assert item.status == "awaiting_approval"
+    assert chat.resolved == []

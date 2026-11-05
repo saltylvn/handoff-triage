@@ -6,7 +6,7 @@ A multi-system workflow agent for a B2B software company's contact form. An LLM 
 
 **The goal is safe automation:** act alone only when the case is low-risk, ask a person otherwise, and never create a duplicate, even when things fail.
 
-> **Status: in progress.** The Gemini classifier has been measured against the live API. The rest of the pipeline runs against fake services in tests and the demo. Live HubSpot and Slack runs and the n8n version are next.
+> **Status: in progress.** The workflow has run live on test accounts: real Gemini, RDAP, HubSpot over OAuth, and Slack, including a person clicking Approve. It runs on one Mac using a temporary tunnel, not as a deployed service. The n8n version is next.
 
 ![How it works: a message arrives, AI reads it, rules decide, then it is handled alone or a person approves](docs/assets/flow.png)
 
@@ -49,6 +49,18 @@ Connecting the real services: [docs/setup.md](docs/setup.md). How it all works, 
 ### Message status
 
 ![Every status a message can have](docs/assets/lifecycle.png)
+
+## Live run
+
+Run on free HubSpot and Slack test accounts with synthetic messages:
+
+| Scenario | Live result |
+|---|---|
+| Confident, routine lead | Contact created in HubSpot, one summary in Slack, no person needed |
+| Same webhook sent again | Recognized as a duplicate and ignored |
+| $250,000 deal | Held for approval even at 1.0 model confidence, with nothing written to HubSpot |
+| Person clicks Approve | Signed click accepted, approver logged, contact created, summary posted |
+| Invalid email rejected by HubSpot | Set aside as a permanent failure, not retried |
 
 ## Evaluation
 
@@ -93,12 +105,11 @@ Raw answers and full metrics: [eval/results](eval/results).
 
 - [x] Durable queue, step ledger, audit log
 - [x] Routing policy and human approval flow
-- [x] HubSpot, Slack and RDAP adapters, tested against simulated responses
-- [x] Gemini adapter, tested against the live API
+- [x] Gemini, RDAP, HubSpot and Slack adapters, tested against simulated responses and the live services
 - [x] Fault-injection tests and demo
 - [x] 100-example eval set and harness
 - [x] First eval run and published results
-- [ ] Live run against HubSpot and Slack test accounts
+- [x] Live run against HubSpot and Slack test accounts: automatic path, webhook replay and human approval
 - [ ] n8n version and written comparison
 - [ ] Alerts on dead-lettered items
 
@@ -128,5 +139,6 @@ Python 3.13, FastAPI, Pydantic, httpx, SQLite, Gemini API, HubSpot CRM API, Slac
 
 - One worker on one machine ([decision 0002](docs/decisions/0002-api-worker-durable-queue.md) covers the path to Postgres).
 - Failed items are recorded, but nothing alerts anyone yet.
+- Failure handling (lost replies, crashes) is proven with injected faults, not by breaking the live services.
 - No data-retention policy, since it handles synthetic data only.
 - The free Gemini tier can use submitted content to improve Google's products, so real customer data needs the paid tier.

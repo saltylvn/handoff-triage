@@ -16,7 +16,8 @@ from triage.store import Store
 AUTHORIZE_URL = "https://app.hubspot.com/oauth/authorize"
 TOKEN_URL = "https://api.hubspot.com/oauth/2026-09/token"  # noqa: S105
 API = "https://api.hubapi.com/crm/v3/objects/contacts"
-SCOPES = "crm.objects.contacts.read crm.objects.contacts.write"
+# Must match requiredScopes in hubspot/src/app/app-hsmeta.json, or the install page shows an error.
+SCOPES = "oauth crm.objects.contacts.read crm.objects.contacts.write"
 _PROVIDER = "hubspot"
 _REFRESH_MARGIN_S = 60
 

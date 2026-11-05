@@ -8,4 +8,6 @@
 - **Slack:** a bot token for one workspace is enough here. Every interaction's signature is verified, and only allow-listed users can approve.
 - **Storage:** OAuth tokens are encrypted with AES-256-GCM before they reach the database. Secrets are read in one place (`config.py`) and live only in a git-ignored file.
 
+- **HubSpot app type:** created with HubSpot's CLI and kept in `hubspot/`, because new legacy apps are no longer allowed and static-token apps have no OAuth flow.
+
 **Consequences.** This is single-tenant. Serving many customers would need per-customer tokens and a Slack OAuth install flow.

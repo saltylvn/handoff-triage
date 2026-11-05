@@ -1,0 +1,5 @@
+{
+  "name": "inbound-triage-agent",
+  "srcDir": "src",
+  "platformVersion": "2026.09"
+}
