@@ -1,6 +1,8 @@
 import base64
 import json
 from collections.abc import Callable
+from pathlib import Path
+from urllib.parse import parse_qs, urlsplit
 
 import httpx
 import pytest
@@ -209,6 +211,17 @@ def test_slack_ok_false_is_an_error() -> None:
         chat.post(MESSAGE)
 
 
+def test_resolved_message_keeps_a_working_mention() -> None:
+    sent: list[bytes] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        sent.append(request.content)
+        return httpx.Response(200, json={"ok": True})
+
+    SlackChat(client(handler), "t", "C1", NO_WAIT).mark_resolved("C1", "1.2", "Approved by <@U1>")
+    assert json.loads(sent[0])["text"] == "Approved by <@U1>"
+
+
 def test_slack_finds_earlier_post_by_metadata() -> None:
     history = {
         "ok": True,
@@ -239,3 +252,10 @@ def test_rdap_reads_age_and_treats_404_as_unknown() -> None:
     assert info.age_days("x/../admin") is None
     missing = RdapDomainInfo(client(lambda _: httpx.Response(404)), NO_WAIT, lambda: now)
     assert missing.age_days("x.example") is None
+
+
+def test_install_scopes_match_the_hubspot_app_config(store: Store) -> None:
+    config = json.loads(Path("hubspot/src/app/app-hsmeta.json").read_text())["config"]["auth"]
+    query = parse_qs(urlsplit(auth_for(store, token_response).authorize_url("s")).query)
+    assert set(query["scope"][0].split()) == set(config["requiredScopes"])
+    assert "http://localhost:3000/oauth/hubspot/callback" in config["redirectUrls"]

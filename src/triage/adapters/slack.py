@@ -131,8 +131,9 @@ class SlackChat:
         return None
 
     def mark_resolved(self, channel: str, ts: str, text: str) -> None:
+        """text is Slack markup built by our code from a validated user ID, so it isn't escaped."""
         self._call(
             "chat.update",
             "POST",
-            json_body={"channel": channel, "ts": ts, "text": escape(text), "blocks": []},
+            json_body={"channel": channel, "ts": ts, "text": text, "blocks": []},
         )

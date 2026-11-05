@@ -7,3 +7,10 @@ __pycache__/
 *.sqlite
 *.sqlite-*
 .DS_Store
+
+# HubSpot CLI credentials
+hubspot.config.yml
+hubspot.config.yaml
+.hsaccount
+archived.hubspot.config.yml
+.claude/

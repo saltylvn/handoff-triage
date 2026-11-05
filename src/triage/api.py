@@ -10,7 +10,7 @@ from urllib.parse import parse_qs
 from fastapi import BackgroundTasks, FastAPI, Request, Response
 from fastapi.concurrency import run_in_threadpool
 from fastapi.responses import HTMLResponse, JSONResponse
-from pydantic import BaseModel, ConfigDict, ValidationError
+from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
 from triage.domain.idempotency import idempotency_key
 from triage.domain.models import Submission
@@ -34,7 +34,7 @@ class _SlackAction(BaseModel):
 
 class _SlackUser(BaseModel):
     model_config = ConfigDict(extra="ignore")
-    id: str
+    id: str = Field(pattern=r"^[A-Z0-9]+$")  # goes into a mention, so only Slack's ID characters
 
 
 class _SlackContainer(BaseModel):
