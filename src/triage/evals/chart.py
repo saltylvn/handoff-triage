@@ -10,7 +10,7 @@ SERIES = (
     ("auto_precision", "Correct when acting alone", "#3987e5"),
     ("auto_rate", "Handled without a person", "#d55181"),
 )
-INK, MUTED, GRID, SURFACE = "#f5f1eb", "#aaa6a2", "#2e2e36", "#0a0a0e"
+INK, MUTED, GRID, SURFACE = "#fafafa", "#c4c4c4", "#303030", "#161616"
 WIDTH, HEIGHT = 720, 420
 LEFT, RIGHT, TOP, BOTTOM = 56, 190, 92, 56
 MIN_LABEL_GAP = 18
