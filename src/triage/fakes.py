@@ -83,6 +83,8 @@ class FakeChat:
         self.resolved: list[str] = []
         self.crash_after_post: deque[Exception] = deque()
         self.fail_posts: deque[Exception] = deque()
+        self.alerts: list[str] = []
+        self.fail_alerts = False
 
     def post(self, message: ChatMessage) -> PostResult:
         if self.fail_posts:
@@ -97,6 +99,11 @@ class FakeChat:
             if message.item_id == item_id and message.kind == kind:
                 return PostResult(ts=str(index), recovered=True)
         return None
+
+    def alert(self, item_id: str, reason: str) -> None:
+        if self.fail_alerts:
+            raise RuntimeError("Slack is down too")
+        self.alerts.append(f"{item_id}: {reason}")
 
     def mark_resolved(self, channel: str, ts: str, text: str) -> None:
         self.resolved.append(text)

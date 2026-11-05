@@ -95,7 +95,7 @@ def main() -> None:
     parts.extend(
         [
             f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" '
-            f'height="{H}" role="img" aria-label="Inbound triage agent system map">',
+            f'height="{H}" role="img" aria-label="Human-in-the-loop triage system map">',
             "<defs>",
             '<pattern id="canvas" width="22" height="22" patternUnits="userSpaceOnUse">'
             f'<circle cx="2" cy="2" r="1.2" fill="{DOT}"/></pattern>',
@@ -110,7 +110,7 @@ def main() -> None:
             f'<rect width="{W}" height="{H}" fill="url(#canvas)"/>',
         ]
     )
-    add_text(40, 46, "INBOUND TRIAGE AGENT", 13, MUTED, MONO, letter_spacing="1.5")
+    add_text(40, 46, "HUMAN-IN-THE-LOOP TRIAGE", 13, MUTED, MONO, letter_spacing="1.5")
     add_text(
         40, 82, "Automates the routine. Asks a person about the rest.", 26, INK, SANS,
         font_weight="500",

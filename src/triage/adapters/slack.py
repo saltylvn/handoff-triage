@@ -2,16 +2,23 @@
 
 import time
 from collections.abc import Callable
+from dataclasses import replace
 from typing import Any
 
 import httpx
 
 from triage.domain.models import ChatMessage, PostResult
-from triage.infra.http import request_json
+from triage.infra.http import HttpError, request_json
 from triage.infra.retry import RetryPolicy, with_retry
 
 _API = "https://slack.com/api"
 _EVENT_TYPE = "triage_item"
+
+
+def _not_sent(error: Exception) -> bool:
+    """A 429 proves Slack did not post. After a 5xx or timeout it might have, and Slack has no
+    idempotency key, so those go back to the queue, where a retry searches for the post first."""
+    return isinstance(error, HttpError) and error.status == 429
 
 
 class SlackApiError(Exception):
@@ -74,7 +81,9 @@ class SlackChat:
         self._retry = retry or RetryPolicy()
         self._clock = clock
 
-    def _call(self, method: str, http: str, **kwargs: Any) -> dict[str, Any]:
+    def _call(
+        self, method: str, http: str, retry: RetryPolicy | None = None, **kwargs: Any
+    ) -> dict[str, Any]:
         data: dict[str, Any] = with_retry(
             lambda: request_json(
                 self._client,
@@ -85,7 +94,7 @@ class SlackChat:
                 headers={"Authorization": f"Bearer {self._token}"},
                 **kwargs,
             ),
-            self._retry,
+            retry or self._retry,
         )
         if not data.get("ok"):
             raise SlackApiError(str(data.get("error", "unknown_error")))
@@ -95,6 +104,7 @@ class SlackChat:
         data = self._call(
             "chat.postMessage",
             "POST",
+            retry=replace(self._retry, retry_on=_not_sent),
             json_body={
                 "channel": self._channel,
                 "text": f"{message.category}: {escape(message.summary)}",
@@ -129,6 +139,22 @@ class SlackChat:
             ):
                 return PostResult(ts=str(message["ts"]), recovered=True)
         return None
+
+    def alert(self, item_id: str, reason: str) -> None:
+        self._call(
+            "chat.postMessage",
+            "POST",
+            retry=replace(self._retry, retry_on=_not_sent),
+            json_body={
+                "channel": self._channel,
+                "text": (
+                    f":rotating_light: Item `{escape(item_id)}` failed and was set aside: "
+                    f"{escape(reason)}\nAfter fixing the cause: "
+                    f"`python -m triage.requeue {escape(item_id)}`"
+                ),
+                "unfurl_links": False,
+            },
+        )
 
     def mark_resolved(self, channel: str, ts: str, text: str) -> None:
         """text is Slack markup built by our code from a validated user ID, so it isn't escaped."""

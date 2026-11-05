@@ -15,6 +15,7 @@ from triage.adapters.slack import SlackApiError, SlackChat, escape, render_block
 from triage.domain.models import ChatMessage, ContactInput, Submission
 from triage.domain.ports import ModelOutputError
 from triage.infra.crypto import decrypt
+from triage.infra.http import HttpError
 from triage.infra.retry import RetryPolicy
 from triage.store import Store
 
@@ -220,6 +221,45 @@ def test_resolved_message_keeps_a_working_mention() -> None:
 
     SlackChat(client(handler), "t", "C1", NO_WAIT).mark_resolved("C1", "1.2", "Approved by <@U1>")
     assert json.loads(sent[0])["text"] == "Approved by <@U1>"
+
+
+def counting_slack(*responses: httpx.Response) -> tuple[SlackChat, list[int]]:
+    calls: list[int] = []
+    remaining = iter(responses)
+
+    def handler(_: httpx.Request) -> httpx.Response:
+        calls.append(1)
+        return next(remaining)
+
+    return SlackChat(client(handler), "t", "C1", NO_WAIT), calls
+
+
+def test_slack_post_is_not_blindly_retried_after_a_server_error() -> None:
+    # Slack may have posted before failing, so the pipeline must search first.
+    chat, calls = counting_slack(httpx.Response(503), httpx.Response(200, json={"ok": True}))
+    with pytest.raises(HttpError):
+        chat.post(MESSAGE)
+    assert len(calls) == 1
+
+
+def test_slack_post_retries_a_rate_limit() -> None:
+    # A 429 proves nothing was posted, so repeating it is safe.
+    chat, calls = counting_slack(
+        httpx.Response(429), httpx.Response(200, json={"ok": True, "ts": "1"})
+    )
+    assert chat.post(MESSAGE).ts == "1"
+    assert len(calls) == 2
+
+
+def test_slack_alert_escapes_the_reason() -> None:
+    sent: list[bytes] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        sent.append(request.content)
+        return httpx.Response(200, json={"ok": True})
+
+    SlackChat(client(handler), "t", "C1", NO_WAIT).alert("i1", "<!channel> broke")
+    assert "<!channel>" not in json.loads(sent[0])["text"]
 
 
 def test_slack_finds_earlier_post_by_metadata() -> None:

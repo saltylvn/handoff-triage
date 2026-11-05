@@ -10,6 +10,7 @@ from triage.evals.metrics import (
     Scored,
     choose_threshold,
     percentile,
+    router_row,
     summarize,
     sweep,
     threshold_row,
@@ -78,6 +79,13 @@ def test_summary_counts_invalid_answers_as_wrong() -> None:
     summary = summarize(rows)
     assert summary["category_accuracy"] == 0.5
     assert summary["invalid_answers"] == 1
+
+
+def test_full_router_also_applies_the_business_rules() -> None:
+    big_deal = triage_of(category="sales_lead", confidence=0.99, team_size=900)
+    rows = [scored("support", "support", 0.95), Scored(example("sales_lead"), big_deal, None)]
+    assert threshold_row(rows, 0.9)["auto_count"] == 2
+    assert router_row(rows, 0.9)["auto_count"] == 1
 
 
 def test_percentile() -> None:

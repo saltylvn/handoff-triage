@@ -100,5 +100,7 @@ stateDiagram-v2
 - **Why not trust the model's confidence?** It's self-reported and inflated: the model rated 95 of 100 messages at 0.90 or higher. I chose the threshold on dev data and confirmed it on held-out test data.
 - **What if HubSpot writes the contact but the reply is lost?** The retry repeats the upsert, which updates the same contact.
 - **What about prompt injection?** The model can only return validated fields. Code decides actions, and injections are in the eval set.
-- **What would you change for production?** Postgres with multiple workers, alerts on dead-lettered items, a data-retention policy, a paid LLM tier, and per-customer credentials.
+- **What would you change for production?** Postgres with multiple workers, a hosted deployment, monitoring dashboards, a data-retention policy, a paid LLM tier, and per-customer credentials.
+- **What's the best bug you found?** While reviewing my own code, I found that the fast HTTP retry could post a Slack message twice if Slack failed after posting. Now only a 429 is retried on the spot, and anything else goes back to the queue, which searches for the earlier post first.
+- **Why not use multiple autonomous agents?** This job doesn't need them. One LLM step inside a deterministic workflow is easier to test and audit than agents choosing their own actions.
 - **When would you choose n8n over code?** n8n when a team needs to see and change the workflow itself, the logic is simple, and speed matters most. Code when the logic is complex or needs thorough tests, version control and precise control of failure handling, as this project does.

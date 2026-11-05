@@ -33,6 +33,7 @@ class RetryPolicy:
     max_wait_s: float = 15.0
     sleep: Callable[[float], None] = field(default=time.sleep)
     rand: Callable[[], float] = field(default=random.random)
+    retry_on: Callable[[Exception], bool] = field(default=is_retryable)
 
 
 def with_retry[T](fn: Callable[[], T], policy: RetryPolicy) -> T:
@@ -42,7 +43,7 @@ def with_retry[T](fn: Callable[[], T], policy: RetryPolicy) -> T:
         try:
             return fn()
         except Exception as error:
-            if attempt >= policy.max_attempts or not is_retryable(error):
+            if attempt >= policy.max_attempts or not policy.retry_on(error):
                 raise
             asked = error.retry_after_s if isinstance(error, HttpError) else None
             wait = max(backoff_s(attempt, policy.base_s, policy.cap_s, policy.rand), asked or 0.0)
