@@ -1,0 +1,17 @@
+# Slack: Create New App > From a manifest. Replace the URL with your tunnel's address.
+display_information:
+  name: Inbound Triage
+  description: Triage summaries and approval requests
+features:
+  bot_user:
+    display_name: Inbound Triage
+settings:
+  interactivity:
+    is_enabled: true
+    request_url: https://YOUR-TUNNEL.example/slack/interactions
+oauth_config:
+  scopes:
+    bot:
+      - chat:write
+      - channels:history
+      - groups:history

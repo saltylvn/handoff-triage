@@ -1,0 +1,11 @@
+flowchart TB
+  replay["The same webhook arrives twice"] --> l1["Layer 1: unique idempotency key<br/>the second arrival is logged and ignored"]
+  crash["Worker crashes or a call times out"] --> l2["Layer 2: step ledger<br/>finished steps are skipped on retry"]
+  lost["HubSpot wrote the contact, but the reply was lost"] --> l3["Layer 3: upsert by email<br/>repeating it updates the same contact"]
+  slost["Slack posted, but the reply was lost"] --> l4["Layer 4: tagged messages<br/>a retry finds the earlier post first"]
+  dbl["Approver double-clicks"] --> l5["Layer 5: compare-and-set<br/>only the first click changes the status"]
+  l1 --> ok(["One record, one message, one action"])
+  l2 --> ok
+  l3 --> ok
+  l4 --> ok
+  l5 --> ok
