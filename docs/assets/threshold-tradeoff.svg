@@ -1,52 +1,52 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-label="A higher threshold automates less and is slightly more accurate" font-family="Helvetica, Arial, sans-serif">
-<rect width="720" height="420" fill="#0a0a0e"/>
-<text x="56.0" y="30.0" font-size="18" fill="#f5f1eb" text-anchor="start">A higher threshold automates less and is slightly more accurate</text>
-<text x="56.0" y="52.0" font-size="13" fill="#aaa6a2" text-anchor="start">70 held-out synthetic messages, gemini-3.5-flash-lite</text>
-<line x1="56" x2="530" y1="364.0" y2="364.0" stroke="#2e2e36"/>
-<text x="48.0" y="368.0" font-size="12" fill="#aaa6a2" text-anchor="end">0%</text>
-<line x1="56" x2="530" y1="296.0" y2="296.0" stroke="#2e2e36"/>
-<text x="48.0" y="300.0" font-size="12" fill="#aaa6a2" text-anchor="end">25%</text>
-<line x1="56" x2="530" y1="228.0" y2="228.0" stroke="#2e2e36"/>
-<text x="48.0" y="232.0" font-size="12" fill="#aaa6a2" text-anchor="end">50%</text>
-<line x1="56" x2="530" y1="160.0" y2="160.0" stroke="#2e2e36"/>
-<text x="48.0" y="164.0" font-size="12" fill="#aaa6a2" text-anchor="end">75%</text>
-<line x1="56" x2="530" y1="92.0" y2="92.0" stroke="#2e2e36"/>
-<text x="48.0" y="96.0" font-size="12" fill="#aaa6a2" text-anchor="end">100%</text>
-<text x="56.0" y="384.0" font-size="12" fill="#aaa6a2" text-anchor="middle">0.50</text>
-<text x="161.3" y="384.0" font-size="12" fill="#aaa6a2" text-anchor="middle">0.60</text>
-<text x="266.7" y="384.0" font-size="12" fill="#aaa6a2" text-anchor="middle">0.70</text>
-<text x="372.0" y="384.0" font-size="12" fill="#aaa6a2" text-anchor="middle">0.80</text>
-<text x="477.3" y="384.0" font-size="12" fill="#aaa6a2" text-anchor="middle">0.90</text>
-<text x="530.0" y="384.0" font-size="12" fill="#aaa6a2" text-anchor="middle">0.95</text>
-<text x="293.0" y="408.0" font-size="13" fill="#aaa6a2" text-anchor="middle">Confidence threshold</text>
-<line x1="477.3" x2="477.3" y1="92" y2="364" stroke="#aaa6a2"/>
-<text x="477.3" y="86.0" font-size="12" fill="#f5f1eb" text-anchor="middle">chosen: 0.90</text>
+<rect width="720" height="420" fill="#161616"/>
+<text x="56.0" y="30.0" font-size="18" fill="#fafafa" text-anchor="start">A higher threshold automates less and is slightly more accurate</text>
+<text x="56.0" y="52.0" font-size="13" fill="#c4c4c4" text-anchor="start">70 held-out synthetic messages, gemini-3.5-flash-lite</text>
+<line x1="56" x2="530" y1="364.0" y2="364.0" stroke="#303030"/>
+<text x="48.0" y="368.0" font-size="12" fill="#c4c4c4" text-anchor="end">0%</text>
+<line x1="56" x2="530" y1="296.0" y2="296.0" stroke="#303030"/>
+<text x="48.0" y="300.0" font-size="12" fill="#c4c4c4" text-anchor="end">25%</text>
+<line x1="56" x2="530" y1="228.0" y2="228.0" stroke="#303030"/>
+<text x="48.0" y="232.0" font-size="12" fill="#c4c4c4" text-anchor="end">50%</text>
+<line x1="56" x2="530" y1="160.0" y2="160.0" stroke="#303030"/>
+<text x="48.0" y="164.0" font-size="12" fill="#c4c4c4" text-anchor="end">75%</text>
+<line x1="56" x2="530" y1="92.0" y2="92.0" stroke="#303030"/>
+<text x="48.0" y="96.0" font-size="12" fill="#c4c4c4" text-anchor="end">100%</text>
+<text x="56.0" y="384.0" font-size="12" fill="#c4c4c4" text-anchor="middle">0.50</text>
+<text x="161.3" y="384.0" font-size="12" fill="#c4c4c4" text-anchor="middle">0.60</text>
+<text x="266.7" y="384.0" font-size="12" fill="#c4c4c4" text-anchor="middle">0.70</text>
+<text x="372.0" y="384.0" font-size="12" fill="#c4c4c4" text-anchor="middle">0.80</text>
+<text x="477.3" y="384.0" font-size="12" fill="#c4c4c4" text-anchor="middle">0.90</text>
+<text x="530.0" y="384.0" font-size="12" fill="#c4c4c4" text-anchor="middle">0.95</text>
+<text x="293.0" y="408.0" font-size="13" fill="#c4c4c4" text-anchor="middle">Confidence threshold</text>
+<line x1="477.3" x2="477.3" y1="92" y2="364" stroke="#c4c4c4"/>
+<text x="477.3" y="86.0" font-size="12" fill="#fafafa" text-anchor="middle">chosen: 0.90</text>
 <polyline points="56.0,104.4 108.7,104.6 161.3,104.6 214.0,104.6 266.7,104.6 319.3,104.6 372.0,104.6 424.7,100.6 477.3,100.8 530.0,96.9" fill="none" stroke="#3987e5" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-<circle cx="56.0" cy="104.4" r="4" fill="#3987e5" stroke="#0a0a0e" stroke-width="2"><title>Correct when acting alone at 0.50: 95%</title></circle>
-<circle cx="108.7" cy="104.6" r="4" fill="#3987e5" stroke="#0a0a0e" stroke-width="2"><title>Correct when acting alone at 0.55: 95%</title></circle>
-<circle cx="161.3" cy="104.6" r="4" fill="#3987e5" stroke="#0a0a0e" stroke-width="2"><title>Correct when acting alone at 0.60: 95%</title></circle>
-<circle cx="214.0" cy="104.6" r="4" fill="#3987e5" stroke="#0a0a0e" stroke-width="2"><title>Correct when acting alone at 0.65: 95%</title></circle>
-<circle cx="266.7" cy="104.6" r="4" fill="#3987e5" stroke="#0a0a0e" stroke-width="2"><title>Correct when acting alone at 0.70: 95%</title></circle>
-<circle cx="319.3" cy="104.6" r="4" fill="#3987e5" stroke="#0a0a0e" stroke-width="2"><title>Correct when acting alone at 0.75: 95%</title></circle>
-<circle cx="372.0" cy="104.6" r="4" fill="#3987e5" stroke="#0a0a0e" stroke-width="2"><title>Correct when acting alone at 0.80: 95%</title></circle>
-<circle cx="424.7" cy="100.6" r="4" fill="#3987e5" stroke="#0a0a0e" stroke-width="2"><title>Correct when acting alone at 0.85: 97%</title></circle>
-<circle cx="477.3" cy="100.8" r="4" fill="#3987e5" stroke="#0a0a0e" stroke-width="2"><title>Correct when acting alone at 0.90: 97%</title></circle>
-<circle cx="530.0" cy="96.9" r="4" fill="#3987e5" stroke="#0a0a0e" stroke-width="2"><title>Correct when acting alone at 0.95: 98%</title></circle>
+<circle cx="56.0" cy="104.4" r="4" fill="#3987e5" stroke="#161616" stroke-width="2"><title>Correct when acting alone at 0.50: 95%</title></circle>
+<circle cx="108.7" cy="104.6" r="4" fill="#3987e5" stroke="#161616" stroke-width="2"><title>Correct when acting alone at 0.55: 95%</title></circle>
+<circle cx="161.3" cy="104.6" r="4" fill="#3987e5" stroke="#161616" stroke-width="2"><title>Correct when acting alone at 0.60: 95%</title></circle>
+<circle cx="214.0" cy="104.6" r="4" fill="#3987e5" stroke="#161616" stroke-width="2"><title>Correct when acting alone at 0.65: 95%</title></circle>
+<circle cx="266.7" cy="104.6" r="4" fill="#3987e5" stroke="#161616" stroke-width="2"><title>Correct when acting alone at 0.70: 95%</title></circle>
+<circle cx="319.3" cy="104.6" r="4" fill="#3987e5" stroke="#161616" stroke-width="2"><title>Correct when acting alone at 0.75: 95%</title></circle>
+<circle cx="372.0" cy="104.6" r="4" fill="#3987e5" stroke="#161616" stroke-width="2"><title>Correct when acting alone at 0.80: 95%</title></circle>
+<circle cx="424.7" cy="100.6" r="4" fill="#3987e5" stroke="#161616" stroke-width="2"><title>Correct when acting alone at 0.85: 97%</title></circle>
+<circle cx="477.3" cy="100.8" r="4" fill="#3987e5" stroke="#161616" stroke-width="2"><title>Correct when acting alone at 0.90: 97%</title></circle>
+<circle cx="530.0" cy="96.9" r="4" fill="#3987e5" stroke="#161616" stroke-width="2"><title>Correct when acting alone at 0.95: 98%</title></circle>
 <circle cx="61.0" cy="68" r="5" fill="#3987e5"/>
-<text x="71.0" y="72.0" font-size="13" fill="#f5f1eb" text-anchor="start">Correct when acting alone</text>
+<text x="71.0" y="72.0" font-size="13" fill="#fafafa" text-anchor="start">Correct when acting alone</text>
 <polyline points="56.0,107.5 108.7,111.4 161.3,111.4 214.0,111.4 266.7,111.4 319.3,111.4 372.0,111.4 424.7,119.2 477.3,123.1 530.0,146.4" fill="none" stroke="#d55181" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-<circle cx="56.0" cy="107.5" r="4" fill="#d55181" stroke="#0a0a0e" stroke-width="2"><title>Handled without a person at 0.50: 94%</title></circle>
-<circle cx="108.7" cy="111.4" r="4" fill="#d55181" stroke="#0a0a0e" stroke-width="2"><title>Handled without a person at 0.55: 93%</title></circle>
-<circle cx="161.3" cy="111.4" r="4" fill="#d55181" stroke="#0a0a0e" stroke-width="2"><title>Handled without a person at 0.60: 93%</title></circle>
-<circle cx="214.0" cy="111.4" r="4" fill="#d55181" stroke="#0a0a0e" stroke-width="2"><title>Handled without a person at 0.65: 93%</title></circle>
-<circle cx="266.7" cy="111.4" r="4" fill="#d55181" stroke="#0a0a0e" stroke-width="2"><title>Handled without a person at 0.70: 93%</title></circle>
-<circle cx="319.3" cy="111.4" r="4" fill="#d55181" stroke="#0a0a0e" stroke-width="2"><title>Handled without a person at 0.75: 93%</title></circle>
-<circle cx="372.0" cy="111.4" r="4" fill="#d55181" stroke="#0a0a0e" stroke-width="2"><title>Handled without a person at 0.80: 93%</title></circle>
-<circle cx="424.7" cy="119.2" r="4" fill="#d55181" stroke="#0a0a0e" stroke-width="2"><title>Handled without a person at 0.85: 90%</title></circle>
-<circle cx="477.3" cy="123.1" r="4" fill="#d55181" stroke="#0a0a0e" stroke-width="2"><title>Handled without a person at 0.90: 89%</title></circle>
-<circle cx="530.0" cy="146.4" r="4" fill="#d55181" stroke="#0a0a0e" stroke-width="2"><title>Handled without a person at 0.95: 80%</title></circle>
+<circle cx="56.0" cy="107.5" r="4" fill="#d55181" stroke="#161616" stroke-width="2"><title>Handled without a person at 0.50: 94%</title></circle>
+<circle cx="108.7" cy="111.4" r="4" fill="#d55181" stroke="#161616" stroke-width="2"><title>Handled without a person at 0.55: 93%</title></circle>
+<circle cx="161.3" cy="111.4" r="4" fill="#d55181" stroke="#161616" stroke-width="2"><title>Handled without a person at 0.60: 93%</title></circle>
+<circle cx="214.0" cy="111.4" r="4" fill="#d55181" stroke="#161616" stroke-width="2"><title>Handled without a person at 0.65: 93%</title></circle>
+<circle cx="266.7" cy="111.4" r="4" fill="#d55181" stroke="#161616" stroke-width="2"><title>Handled without a person at 0.70: 93%</title></circle>
+<circle cx="319.3" cy="111.4" r="4" fill="#d55181" stroke="#161616" stroke-width="2"><title>Handled without a person at 0.75: 93%</title></circle>
+<circle cx="372.0" cy="111.4" r="4" fill="#d55181" stroke="#161616" stroke-width="2"><title>Handled without a person at 0.80: 93%</title></circle>
+<circle cx="424.7" cy="119.2" r="4" fill="#d55181" stroke="#161616" stroke-width="2"><title>Handled without a person at 0.85: 90%</title></circle>
+<circle cx="477.3" cy="123.1" r="4" fill="#d55181" stroke="#161616" stroke-width="2"><title>Handled without a person at 0.90: 89%</title></circle>
+<circle cx="530.0" cy="146.4" r="4" fill="#d55181" stroke="#161616" stroke-width="2"><title>Handled without a person at 0.95: 80%</title></circle>
 <circle cx="275.0" cy="68" r="5" fill="#d55181"/>
-<text x="285.0" y="72.0" font-size="13" fill="#f5f1eb" text-anchor="start">Handled without a person</text>
-<text x="540.0" y="100.9" font-size="13" fill="#f5f1eb" text-anchor="start">98% Correct</text>
-<text x="540.0" y="150.4" font-size="13" fill="#f5f1eb" text-anchor="start">80% Handled</text>
+<text x="285.0" y="72.0" font-size="13" fill="#fafafa" text-anchor="start">Handled without a person</text>
+<text x="540.0" y="100.9" font-size="13" fill="#fafafa" text-anchor="start">98% Correct</text>
+<text x="540.0" y="150.4" font-size="13" fill="#fafafa" text-anchor="start">80% Handled</text>
 </svg>

@@ -1,45 +1,52 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1170" height="560" viewBox="0 0 1170 560" role="img" aria-label="A message is queued, then processed, then done, discarded, failed or waiting on a person">
-<defs><pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#1b1b21"/></pattern>
-<marker id="grey" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M1 1L9 5L1 9" fill="none" stroke="#6e6e78" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
-<marker id="rose" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M1 1L9 5L1 9" fill="none" stroke="#e879a3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<defs><pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#3d3d3d"/></pattern>
+<marker id="grey" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8f8f8f"/></marker>
+<marker id="rose" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#ff91ac"/></marker>
 </defs>
-<rect width="1170" height="560" fill="#0a0a0e"/>
+<rect width="1170" height="560" fill="#161616"/>
 <rect width="1170" height="560" fill="url(#dots)"/>
-<circle cx="44" cy="51" r="3.5" fill="#e879a3"/>
-<text x="58" y="56" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="#aaa6a2" letter-spacing="2">STATUS</text>
-<text x="40" y="104" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="36" fill="#f5f1eb" font-weight="600" letter-spacing="-0.8">Every message is always in one known state.</text>
-<text x="1130" y="536" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" fill="#aaa6a2" text-anchor="end" letter-spacing="0.4">fig. 05 — the life of a message</text>
-<path d="M 220 316.0 C 260.0 316.0, 260.0 316.0, 300 316.0" fill="none" stroke="#6e6e78" stroke-width="1.8" stroke-linecap="round" marker-end="url(#grey)"/>
-<path d="M 480 316.0 C 535.0 316.0, 535.0 196.0, 590 196.0" fill="none" stroke="#6e6e78" stroke-width="1.8" stroke-linecap="round" marker-end="url(#grey)"/>
-<path d="M 480 316.0 C 535.0 316.0, 535.0 281.0, 590 281.0" fill="none" stroke="#6e6e78" stroke-width="1.8" stroke-linecap="round" marker-end="url(#grey)"/>
-<path d="M 480 316.0 C 535.0 316.0, 535.0 366.0, 590 366.0" fill="none" stroke="#6e6e78" stroke-width="1.8" stroke-linecap="round" marker-end="url(#grey)"/>
-<path d="M 480 316.0 C 535.0 316.0, 535.0 451.0, 590 451.0" fill="none" stroke="#e879a3" stroke-width="1.8" stroke-linecap="round" marker-end="url(#rose)"/>
-<path d="M 790 451.0 C 845.0 451.0, 845.0 451.0, 900 451.0" fill="none" stroke="#e879a3" stroke-width="1.8" stroke-linecap="round" marker-end="url(#rose)"/>
-<path d="M 390 280 C 390 205, 130 205, 130 276" fill="none" stroke="#6e6e78" stroke-width="1.8" stroke-linecap="round" marker-end="url(#grey)"/>
-<path d="M 680 487 C 680 535, 130 535, 130 356" fill="none" stroke="#e879a3" stroke-width="1.8" stroke-linecap="round" marker-end="url(#rose)"/>
-<rect x="40" y="280" width="180" height="72" rx="14" fill="#131318" stroke="#2e2e36" stroke-width="1.5"/>
-<text x="58" y="313.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#f5f1eb" font-weight="600" letter-spacing="-0.2">Queued</text>
-<text x="58" y="336.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#aaa6a2">ready to process</text>
-<rect x="300" y="280" width="180" height="72" rx="14" fill="#131318" stroke="#2e2e36" stroke-width="1.5"/>
-<text x="318" y="313.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#f5f1eb" font-weight="600" letter-spacing="-0.2">Processing</text>
-<text x="318" y="336.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#aaa6a2">worker has a lease</text>
-<rect x="590" y="160" width="180" height="72" rx="14" fill="#131318" stroke="#2e2e36" stroke-width="1.5"/>
-<text x="608" y="193.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#f5f1eb" font-weight="600" letter-spacing="-0.2">Done</text>
-<text x="608" y="216.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#aaa6a2">systems updated</text>
-<rect x="590" y="245" width="180" height="72" rx="14" fill="#131318" stroke="#2e2e36" stroke-width="1.5"/>
-<text x="608" y="278.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#f5f1eb" font-weight="600" letter-spacing="-0.2">Discarded</text>
-<text x="608" y="301.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#aaa6a2">confident spam</text>
-<rect x="590" y="330" width="180" height="72" rx="14" fill="#131318" stroke="#2e2e36" stroke-width="1.5"/>
-<text x="608" y="363.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#f5f1eb" font-weight="600" letter-spacing="-0.2">Failed</text>
-<text x="608" y="386.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#aaa6a2">set aside, not lost</text>
-<rect x="590" y="415" width="200" height="72" rx="14" fill="#e879a3" stroke="#e879a3" stroke-width="1.5"/>
-<text x="608" y="448.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#0a0a0e" font-weight="600" letter-spacing="-0.2">Waiting on a person</text>
-<text x="608" y="471.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#0a0a0e">in Slack</text>
-<rect x="900" y="415" width="180" height="72" rx="14" fill="#131318" stroke="#2e2e36" stroke-width="1.5"/>
-<text x="918" y="448.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#f5f1eb" font-weight="600" letter-spacing="-0.2">Rejected</text>
-<text x="918" y="471.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#aaa6a2">nothing written</text>
-<rect x="183.2" y="210" width="153.6" height="26" rx="13" fill="#0a0a0e" stroke="#2e2e36"/>
-<text x="260" y="227.5" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#f5f1eb" text-anchor="middle">retry with backoff</text>
-<rect x="364.2" y="494" width="81.6" height="26" rx="13" fill="#0a0a0e" stroke="#2e2e36"/>
-<text x="405" y="511.5" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#f5f1eb" text-anchor="middle">approved</text>
+<text x="40" y="50" font-family="Menlo, Consolas, monospace" font-size="13" fill="#c4c4c4" letter-spacing="1.5">STATUS</text>
+<path d="M 680 487 C 680 535, 130 535, 130 356" fill="none" stroke="#ff91ac" stroke-width="2" stroke-linecap="round" marker-end="url(#rose)"/>
+<path d="M 390 280 C 390 205, 130 205, 130 276" fill="none" stroke="#8f8f8f" stroke-width="2" stroke-linecap="round" marker-end="url(#grey)"/>
+<path d="M 790 451.0 C 842.0 451.0, 842.0 451.0, 894 451.0" fill="none" stroke="#ff91ac" stroke-width="2" stroke-linecap="round" marker-end="url(#rose)"/>
+<path d="M 480 316.0 C 532.0 316.0, 532.0 451.0, 584 451.0" fill="none" stroke="#ff91ac" stroke-width="2" stroke-linecap="round" marker-end="url(#rose)"/>
+<path d="M 480 316.0 C 532.0 316.0, 532.0 366.0, 584 366.0" fill="none" stroke="#8f8f8f" stroke-width="2" stroke-linecap="round" marker-end="url(#grey)"/>
+<path d="M 480 316.0 C 532.0 316.0, 532.0 281.0, 584 281.0" fill="none" stroke="#8f8f8f" stroke-width="2" stroke-linecap="round" marker-end="url(#grey)"/>
+<path d="M 480 316.0 C 532.0 316.0, 532.0 196.0, 584 196.0" fill="none" stroke="#8f8f8f" stroke-width="2" stroke-linecap="round" marker-end="url(#grey)"/>
+<path d="M 220 316.0 C 257.0 316.0, 257.0 316.0, 294 316.0" fill="none" stroke="#8f8f8f" stroke-width="2" stroke-linecap="round" marker-end="url(#grey)"/>
+<text x="40" y="92" font-family="Helvetica, Arial, sans-serif" font-size="32" fill="#fafafa" font-weight="500">Every message is always in one known state.</text>
+<rect x="40" y="280" width="180" height="72" rx="14" fill="#212121" stroke="#616161" stroke-width="1.5"/>
+<text x="56" y="313.0" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#fafafa" font-weight="600">Queued</text>
+<text x="56" y="334.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#c4c4c4">ready to process</text>
+<rect x="300" y="280" width="180" height="72" rx="14" fill="#212121" stroke="#616161" stroke-width="1.5"/>
+<text x="316" y="313.0" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#fafafa" font-weight="600">Processing</text>
+<text x="316" y="334.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#c4c4c4">worker has a lease</text>
+<rect x="590" y="160" width="180" height="72" rx="14" fill="#212121" stroke="#616161" stroke-width="1.5"/>
+<text x="606" y="193.0" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#fafafa" font-weight="600">Done</text>
+<text x="606" y="214.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#c4c4c4">systems updated</text>
+<rect x="590" y="245" width="180" height="72" rx="14" fill="#212121" stroke="#616161" stroke-width="1.5"/>
+<text x="606" y="278.0" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#fafafa" font-weight="600">Discarded</text>
+<text x="606" y="299.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#c4c4c4">confident spam</text>
+<rect x="590" y="330" width="180" height="72" rx="14" fill="#212121" stroke="#616161" stroke-width="1.5"/>
+<text x="606" y="363.0" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#fafafa" font-weight="600">Failed</text>
+<text x="606" y="384.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#c4c4c4">set aside, not lost</text>
+<rect x="590" y="415" width="200" height="72" rx="14" fill="#ffbcca" stroke="#ff91ac" stroke-width="1.5"/>
+<text x="606" y="448.0" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#212121" font-weight="600">Waiting on a person</text>
+<text x="606" y="469.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#212121">in Slack</text>
+<rect x="900" y="415" width="180" height="72" rx="14" fill="#212121" stroke="#616161" stroke-width="1.5"/>
+<text x="916" y="448.0" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#fafafa" font-weight="600">Rejected</text>
+<text x="916" y="469.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#c4c4c4">nothing written</text>
+<circle cx="220" cy="316.0" r="4.5" fill="#161616" stroke="#8f8f8f" stroke-width="2"/>
+<circle cx="300" cy="316.0" r="4.5" fill="#161616" stroke="#8f8f8f" stroke-width="2"/>
+<circle cx="480" cy="316.0" r="4.5" fill="#161616" stroke="#8f8f8f" stroke-width="2"/>
+<circle cx="590" cy="196.0" r="4.5" fill="#161616" stroke="#8f8f8f" stroke-width="2"/>
+<circle cx="590" cy="281.0" r="4.5" fill="#161616" stroke="#8f8f8f" stroke-width="2"/>
+<circle cx="590" cy="366.0" r="4.5" fill="#161616" stroke="#8f8f8f" stroke-width="2"/>
+<circle cx="590" cy="451.0" r="4.5" fill="#161616" stroke="#8f8f8f" stroke-width="2"/>
+<circle cx="790" cy="451.0" r="4.5" fill="#161616" stroke="#8f8f8f" stroke-width="2"/>
+<circle cx="900" cy="451.0" r="4.5" fill="#161616" stroke="#8f8f8f" stroke-width="2"/>
+<rect x="184.1" y="210" width="151.8" height="26" rx="13" fill="#303030" stroke="#474747"/>
+<text x="260" y="227.5" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#fafafa" text-anchor="middle">retry with backoff</text>
+<rect x="364.6" y="494" width="80.8" height="26" rx="13" fill="#303030" stroke="#474747"/>
+<text x="405" y="511.5" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#fafafa" text-anchor="middle">approved</text>
 </svg>

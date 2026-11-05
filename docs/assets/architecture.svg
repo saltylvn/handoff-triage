@@ -1,50 +1,63 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1170" height="590" viewBox="0 0 1170 590" role="img" aria-label="A contact form calls the API, which saves to a database. A worker takes items and calls Gemini, RDAP, HubSpot and Slack. Slack button clicks return to the API.">
-<defs><pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#1b1b21"/></pattern>
-<marker id="grey" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M1 1L9 5L1 9" fill="none" stroke="#6e6e78" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
-<marker id="rose" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M1 1L9 5L1 9" fill="none" stroke="#e879a3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<svg xmlns="http://www.w3.org/2000/svg" width="1170" height="620" viewBox="0 0 1170 620" role="img" aria-label="A contact form calls the API, which saves to a database. A worker takes items and calls Gemini, RDAP, HubSpot and Slack. Slack button clicks return to the API.">
+<defs><pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#3d3d3d"/></pattern>
+<marker id="grey" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8f8f8f"/></marker>
+<marker id="rose" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#ff91ac"/></marker>
 </defs>
-<rect width="1170" height="590" fill="#0a0a0e"/>
-<rect width="1170" height="590" fill="url(#dots)"/>
-<circle cx="44" cy="51" r="3.5" fill="#e879a3"/>
-<text x="58" y="56" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="#aaa6a2" letter-spacing="2">ARCHITECTURE</text>
-<text x="40" y="104" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="36" fill="#f5f1eb" font-weight="600" letter-spacing="-0.8">A queue separates fast replies from slow work.</text>
-<text x="1130" y="566" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" fill="#aaa6a2" text-anchor="end" letter-spacing="0.4">fig. 02 — the system</text>
-<path d="M 220 301.0 C 244 301.0, 241 301.0, 265 301.0" fill="none" stroke="#6e6e78" stroke-width="1.8" stroke-linecap="round" marker-end="url(#grey)"/>
-<path d="M 445 301.0 C 469 301.0, 466 301.0, 490 301.0" fill="none" stroke="#6e6e78" stroke-width="1.8" stroke-linecap="round" marker-end="url(#grey)"/>
-<path d="M 670 301.0 C 694 301.0, 691 301.0, 715 301.0" fill="none" stroke="#6e6e78" stroke-width="1.8" stroke-linecap="round" marker-end="url(#grey)"/>
-<path d="M 895 301.0 C 922.5 301.0, 922.5 191.0, 950 191.0" fill="none" stroke="#6e6e78" stroke-width="1.8" stroke-linecap="round" marker-end="url(#grey)"/>
-<path d="M 895 301.0 C 922.5 301.0, 922.5 276.0, 950 276.0" fill="none" stroke="#6e6e78" stroke-width="1.8" stroke-linecap="round" marker-end="url(#grey)"/>
-<path d="M 895 301.0 C 922.5 301.0, 922.5 361.0, 950 361.0" fill="none" stroke="#6e6e78" stroke-width="1.8" stroke-linecap="round" marker-end="url(#grey)"/>
-<path d="M 895 301.0 C 922.5 301.0, 922.5 446.0, 950 446.0" fill="none" stroke="#6e6e78" stroke-width="1.8" stroke-linecap="round" marker-end="url(#grey)"/>
-<path d="M 1040 482 C 1040 545, 355 545, 355 351" fill="none" stroke="#e879a3" stroke-width="1.8" stroke-linecap="round" marker-end="url(#rose)"/>
-<rect x="40" y="255" width="180" height="92" rx="14" fill="#131318" stroke="#2e2e36" stroke-width="1.5"/>
-<text x="58" y="298.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#f5f1eb" font-weight="600" letter-spacing="-0.2">Contact form</text>
-<text x="58" y="321.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#aaa6a2">signed webhook</text>
-<rect x="265" y="255" width="180" height="92" rx="14" fill="#131318" stroke="#2e2e36" stroke-width="1.5"/>
-<text x="283" y="298.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#f5f1eb" font-weight="600" letter-spacing="-0.2">API</text>
-<text x="283" y="321.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#aaa6a2">verifies, replies fast</text>
-<rect x="490" y="255" width="180" height="92" rx="14" fill="#131318" stroke="#2e2e36" stroke-width="1.5"/>
-<text x="508" y="298.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#f5f1eb" font-weight="600" letter-spacing="-0.2">Database</text>
-<text x="508" y="321.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#aaa6a2">queue and audit log</text>
-<rect x="715" y="255" width="180" height="92" rx="14" fill="#e879a3" stroke="#e879a3" stroke-width="1.5"/>
-<text x="733" y="298.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#0a0a0e" font-weight="600" letter-spacing="-0.2">Worker</text>
-<text x="733" y="321.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#0a0a0e">retries safely</text>
-<rect x="950" y="155" width="180" height="72" rx="14" fill="#131318" stroke="#2e2e36" stroke-width="1.5"/>
-<text x="968" y="188.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#f5f1eb" font-weight="600" letter-spacing="-0.2">Gemini</text>
-<text x="968" y="211.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#aaa6a2">reads the message</text>
-<rect x="950" y="240" width="180" height="72" rx="14" fill="#131318" stroke="#2e2e36" stroke-width="1.5"/>
-<text x="968" y="273.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#f5f1eb" font-weight="600" letter-spacing="-0.2">RDAP</text>
-<text x="968" y="296.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#aaa6a2">checks the domain</text>
-<rect x="950" y="325" width="180" height="72" rx="14" fill="#131318" stroke="#2e2e36" stroke-width="1.5"/>
-<text x="968" y="358.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#f5f1eb" font-weight="600" letter-spacing="-0.2">HubSpot</text>
-<text x="968" y="381.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#aaa6a2">contacts, OAuth</text>
-<rect x="950" y="410" width="180" height="72" rx="14" fill="#131318" stroke="#2e2e36" stroke-width="1.5"/>
-<text x="968" y="443.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#f5f1eb" font-weight="600" letter-spacing="-0.2">Slack</text>
-<text x="968" y="466.0" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#aaa6a2">summaries, buttons</text>
-<circle cx="220" cy="301.0" r="4" fill="#0a0a0e" stroke="#6e6e78" stroke-width="1.6"/>
-<circle cx="445" cy="301.0" r="4" fill="#0a0a0e" stroke="#6e6e78" stroke-width="1.6"/>
-<circle cx="670" cy="301.0" r="4" fill="#0a0a0e" stroke="#6e6e78" stroke-width="1.6"/>
-<circle cx="895" cy="301.0" r="4" fill="#0a0a0e" stroke="#6e6e78" stroke-width="1.6"/>
-<rect x="609.4" y="500" width="175.20000000000002" height="26" rx="13" fill="#0a0a0e" stroke="#2e2e36"/>
-<text x="697" y="517.5" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#f5f1eb" text-anchor="middle">signed approval click</text>
+<rect width="1170" height="620" fill="#161616"/>
+<rect width="1170" height="620" fill="url(#dots)"/>
+<text x="40" y="50" font-family="Menlo, Consolas, monospace" font-size="13" fill="#c4c4c4" letter-spacing="1.5">ARCHITECTURE</text>
+<path d="M 1040 517 C 1040 585, 355 585, 355 351" fill="none" stroke="#ff91ac" stroke-width="2" stroke-linecap="round" marker-end="url(#rose)"/>
+<path d="M 895 301.0 C 919.5 301.0, 919.5 471.0, 944 471.0" fill="none" stroke="#8f8f8f" stroke-width="2" stroke-linecap="round" marker-end="url(#grey)"/>
+<path d="M 895 301.0 C 919.5 301.0, 919.5 371.0, 944 371.0" fill="none" stroke="#8f8f8f" stroke-width="2" stroke-linecap="round" marker-end="url(#grey)"/>
+<path d="M 895 301.0 C 919.5 301.0, 919.5 271.0, 944 271.0" fill="none" stroke="#8f8f8f" stroke-width="2" stroke-linecap="round" marker-end="url(#grey)"/>
+<path d="M 895 301.0 C 919.5 301.0, 919.5 171.0, 944 171.0" fill="none" stroke="#8f8f8f" stroke-width="2" stroke-linecap="round" marker-end="url(#grey)"/>
+<path d="M 670 301.0 C 694 301.0, 685 301.0, 709 301.0" fill="none" stroke="#8f8f8f" stroke-width="2" stroke-linecap="round" marker-end="url(#grey)"/>
+<path d="M 445 301.0 C 469 301.0, 460 301.0, 484 301.0" fill="none" stroke="#8f8f8f" stroke-width="2" stroke-linecap="round" marker-end="url(#grey)"/>
+<path d="M 220 301.0 C 244 301.0, 235 301.0, 259 301.0" fill="none" stroke="#8f8f8f" stroke-width="2" stroke-linecap="round" marker-end="url(#grey)"/>
+<text x="40" y="92" font-family="Helvetica, Arial, sans-serif" font-size="32" fill="#fafafa" font-weight="500">A queue separates fast replies from slow work.</text>
+<rect x="40" y="255" width="180" height="92" rx="14" fill="#212121" stroke="#616161" stroke-width="1.5"/>
+<text x="56" y="279" font-family="Menlo, Consolas, monospace" font-size="10" fill="#c4c4c4" letter-spacing="1">TRIGGER</text>
+<text x="56" y="305" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#fafafa" font-weight="600">Contact form</text>
+<text x="56" y="326" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#c4c4c4">signed webhook</text>
+<rect x="265" y="255" width="180" height="92" rx="14" fill="#212121" stroke="#616161" stroke-width="1.5"/>
+<text x="281" y="279" font-family="Menlo, Consolas, monospace" font-size="10" fill="#c4c4c4" letter-spacing="1">SECURITY</text>
+<text x="281" y="305" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#fafafa" font-weight="600">API</text>
+<text x="281" y="326" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#c4c4c4">verifies, replies fast</text>
+<rect x="490" y="255" width="180" height="92" rx="14" fill="#212121" stroke="#616161" stroke-width="1.5"/>
+<text x="506" y="279" font-family="Menlo, Consolas, monospace" font-size="10" fill="#c4c4c4" letter-spacing="1">RELIABILITY</text>
+<text x="506" y="305" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#fafafa" font-weight="600">Database</text>
+<text x="506" y="326" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#c4c4c4">queue and audit log</text>
+<rect x="715" y="255" width="180" height="92" rx="14" fill="#ffbcca" stroke="#ff91ac" stroke-width="1.5"/>
+<text x="731" y="279" font-family="Menlo, Consolas, monospace" font-size="10" fill="#212121" letter-spacing="1">SLOW WORK</text>
+<text x="731" y="305" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#212121" font-weight="600">Worker</text>
+<text x="731" y="326" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#212121">retries safely</text>
+<rect x="950" y="125" width="180" height="92" rx="14" fill="#212121" stroke="#616161" stroke-width="1.5"/>
+<text x="966" y="149" font-family="Menlo, Consolas, monospace" font-size="10" fill="#c4c4c4" letter-spacing="1">AI MODEL</text>
+<text x="966" y="175" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#fafafa" font-weight="600">Gemini</text>
+<text x="966" y="196" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#c4c4c4">reads the message</text>
+<rect x="950" y="225" width="180" height="92" rx="14" fill="#212121" stroke="#616161" stroke-width="1.5"/>
+<text x="966" y="249" font-family="Menlo, Consolas, monospace" font-size="10" fill="#c4c4c4" letter-spacing="1">OUTSIDE API</text>
+<text x="966" y="275" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#fafafa" font-weight="600">RDAP</text>
+<text x="966" y="296" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#c4c4c4">checks the domain</text>
+<rect x="950" y="325" width="180" height="92" rx="14" fill="#212121" stroke="#616161" stroke-width="1.5"/>
+<text x="966" y="349" font-family="Menlo, Consolas, monospace" font-size="10" fill="#c4c4c4" letter-spacing="1">CRM · OAUTH 2.0</text>
+<text x="966" y="375" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#fafafa" font-weight="600">HubSpot</text>
+<text x="966" y="396" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#c4c4c4">contacts</text>
+<rect x="950" y="425" width="180" height="92" rx="14" fill="#212121" stroke="#616161" stroke-width="1.5"/>
+<text x="966" y="449" font-family="Menlo, Consolas, monospace" font-size="10" fill="#c4c4c4" letter-spacing="1">CHAT</text>
+<text x="966" y="475" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#fafafa" font-weight="600">Slack</text>
+<text x="966" y="496" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#c4c4c4">summaries, buttons</text>
+<circle cx="220" cy="301.0" r="4.5" fill="#161616" stroke="#8f8f8f" stroke-width="2"/>
+<circle cx="265" cy="301.0" r="4.5" fill="#161616" stroke="#8f8f8f" stroke-width="2"/>
+<circle cx="445" cy="301.0" r="4.5" fill="#161616" stroke="#8f8f8f" stroke-width="2"/>
+<circle cx="490" cy="301.0" r="4.5" fill="#161616" stroke="#8f8f8f" stroke-width="2"/>
+<circle cx="670" cy="301.0" r="4.5" fill="#161616" stroke="#8f8f8f" stroke-width="2"/>
+<circle cx="715" cy="301.0" r="4.5" fill="#161616" stroke="#8f8f8f" stroke-width="2"/>
+<circle cx="895" cy="301.0" r="4.5" fill="#161616" stroke="#8f8f8f" stroke-width="2"/>
+<circle cx="950" cy="171.0" r="4.5" fill="#161616" stroke="#8f8f8f" stroke-width="2"/>
+<circle cx="950" cy="271.0" r="4.5" fill="#161616" stroke="#8f8f8f" stroke-width="2"/>
+<circle cx="950" cy="371.0" r="4.5" fill="#161616" stroke="#8f8f8f" stroke-width="2"/>
+<circle cx="950" cy="471.0" r="4.5" fill="#161616" stroke="#8f8f8f" stroke-width="2"/>
+<rect x="610.45" y="538" width="173.1" height="26" rx="13" fill="#303030" stroke="#474747"/>
+<text x="697" y="555.5" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#fafafa" text-anchor="middle">signed approval click</text>
 </svg>
