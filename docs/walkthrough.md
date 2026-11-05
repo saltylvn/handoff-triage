@@ -101,4 +101,4 @@ stateDiagram-v2
 - **What if HubSpot writes the contact but the reply is lost?** The retry repeats the upsert, which updates the same contact.
 - **What about prompt injection?** The model can only return validated fields. Code decides actions, and injections are in the eval set.
 - **What would you change for production?** Postgres with multiple workers, alerts on dead-lettered items, a data-retention policy, a paid LLM tier, and per-customer credentials.
-- **When would you choose n8n over code?** Comparison comes with the n8n build.
+- **When would you choose n8n over code?** n8n when a team needs to see and change the workflow itself, the logic is simple, and speed matters most. Code when the logic is complex or needs thorough tests, version control and precise control of failure handling, as this project does.

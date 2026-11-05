@@ -8,4 +8,4 @@
 
 **Alternatives.** TypeScript would work and the owner knows it, but evals and data analysis are more natural in Python, and two languages would add cost with no user-facing benefit.
 
-**Consequences.** TypeScript is reserved for a web dashboard, if one is ever added. The n8n build covers the low-code side, so the project shows both ways of working.
+**Consequences.** TypeScript is reserved for a web dashboard, if one is ever added.
