@@ -16,7 +16,7 @@
 
 These are from synthetic test data, so [read the caveats](#evaluation). The workflow has also [run live](#live-run) on HubSpot and Slack test accounts, including a real approval click.
 
-![How it works: a message arrives, AI reads it, rules decide, then it is handled alone or a person approves](docs/assets/flow.png)
+![The Inbound Triage Agent in the middle, connected to Gemini, RDAP, HubSpot and Slack, with its six workflow steps, results on 70 held-out messages, a pending Slack approval and the tools it is built with](docs/assets/overview.png)
 
 > **By design:** this is one LLM step inside a deterministic workflow, not a set of autonomous agents, because fixed steps are easier to test, audit and trust.
 
@@ -78,11 +78,23 @@ Every decision is recorded. This is the audit trail from that $250,000 deal, sho
 
 ## Architecture
 
-![Architecture: contact form, API, database and worker, connected to Gemini, RDAP, HubSpot and Slack](docs/assets/architecture.png)
+![Architecture: a contact form calls the API, which saves to a SQLite queue; a worker calls Gemini, RDAP, HubSpot and Slack, and signed approval clicks return to the API. Below, an example signed webhook call and its two responses](docs/assets/architecture.png)
 
-### Full system map
+### Workflow and routing rules
 
-![Full system map: every step from the contact form through the API, database and worker, plus Gemini, RDAP, HubSpot, Slack and the approver](docs/assets/system-map.png)
+![Six workflow steps with the tools each one calls and an example run result, next to the seven rules that send a message to a person](docs/assets/workflow.png)
+
+### System design: the reliability layer
+
+![Intake checks, storage, five detours such as approval, retry and failure, and a step ledger that lets a retry skip finished work](docs/assets/system-design.png)
+
+### AI design: the decision layer
+
+![The JSON contract Gemini must return, seven routing rules in code, a pending Slack approval, and evaluation results](docs/assets/ai-design.png)
+
+### Integrations and security: the integration layer
+
+![HubSpot OAuth 2.0 in six steps, a retry budget, the checks on every Slack approval click, and an example API log](docs/assets/integrations-security.png)
 
 ### Key decisions
 
@@ -96,13 +108,9 @@ Every decision is recorded. This is the audit trail from that $250,000 deal, sho
 
 ## Reliability
 
-![Five failures and how the system responds to each](docs/assets/reliability.png)
+![Six failures and how the system responds to each, and an example HubSpot retry timeline: a 503, a 429 with Retry-After, then 200 OK](docs/assets/reliability.png)
 
 Items that still fail are set aside, trigger a Slack alert, and can be retried with `python -m triage.requeue` once the cause is fixed. Finished steps are skipped, so nothing repeats.
-
-![Rules flag an item, Slack asks, a person decides, HubSpot is updated](docs/assets/approval.png)
-
-![Every status a message can have](docs/assets/lifecycle.png)
 
 ## Evaluation
 
@@ -154,6 +162,7 @@ src/triage/
 hubspot/            the HubSpot OAuth app, as configuration
 eval/               labeled examples and results
 docs/               walkthrough, setup, decision records, diagrams
+scripts/visuals/    draws the diagrams in docs/assets (make diagrams)
 ```
 
 **Stack:** Python 3.13, FastAPI, Pydantic, httpx, SQLite, Docker, Gemini API, HubSpot CRM API, Slack API.

@@ -34,6 +34,8 @@ select = ["E", "F", "I", "B", "UP", "S", "SIM", "RUF"]
 "tests/*" = ["S101", "S105", "S106", "S107"]
 "src/triage/evals/*" = ["S311"]
 "src/triage/demo.py" = ["S101"]
+# Drawing scripts: long lines are on-image text and coordinates; asserts guard the layout.
+"scripts/visuals/*" = ["E501", "S101"]
 
 [tool.mypy]
 strict = true
