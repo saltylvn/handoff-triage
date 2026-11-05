@@ -280,7 +280,58 @@ def lifecycle() -> None:
     c.save("lifecycle")
 
 
+def social_preview() -> None:
+    """The image GitHub shows when the repo link is shared: 1280 by 640."""
+    w, h = 1280, 640
+    stats = (
+        ("84%", "handled alone"),
+        ("97%", "correct when acting alone"),
+        ("0 of 4", "sensitive messages acted on alone"),
+    )
+
+    def text(x: float, y: float, words: str, size: int, fill: str, extra: str = "") -> str:
+        return (
+            f'<text x="{x}" y="{y}" font-family="{SANS}" font-size="{size}" fill="{fill}" {extra}>'
+            f"{escape(words)}</text>"
+        )
+
+    parts = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}">',
+        '<defs><pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">'
+        f'<circle cx="2" cy="2" r="1.1" fill="{DOT}"/></pattern></defs>',
+        f'<rect width="{w}" height="{h}" fill="{BG}"/>',
+        f'<rect width="{w}" height="{h}" fill="url(#dots)"/>',
+        f'<circle cx="86" cy="104" r="5" fill="{ROSE}"/>',
+        text(
+            106,
+            111,
+            "HUMAN-IN-THE-LOOP TRIAGE",
+            20,
+            MUTED,
+            f'font-family="{MONO}" letter-spacing="3"',
+        ).replace(f'font-family="{SANS}" ', "", 1),
+        text(80, 215, "Automates the routine.", 72, INK, 'font-weight="600" letter-spacing="-2"'),
+        text(
+            80,
+            300,
+            "Asks a person about the rest.",
+            72,
+            ROSE,
+            'font-weight="600" letter-spacing="-2"',
+        ),
+    ]
+    for index, (value, label) in enumerate(stats):
+        x = 80 + index * 380
+        parts.append(text(x, 425, value, 56, INK, 'font-weight="600" letter-spacing="-1"'))
+        parts.append(text(x, 462, label, 20, MUTED))
+    parts.append(text(80, 560, "70 held-out synthetic messages", 18, MUTED))
+    parts.append("</svg>")
+    Path("docs/assets/social-preview.svg").write_text("\n".join(parts) + "\n")
+    print(f"social-preview {w},{h}")
+
+
 if __name__ == "__main__":
+    social_preview()
     flow()
     architecture()
     reliability()
