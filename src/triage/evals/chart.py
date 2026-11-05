@@ -7,10 +7,10 @@ from html import escape
 from pathlib import Path
 
 SERIES = (
-    ("auto_precision", "Correct when acting alone", "#3987e5"),
-    ("auto_rate", "Handled without a person", "#d55181"),
+    ("auto_precision", "Correct when acting alone", "#7d8ff2"),
+    ("auto_rate", "Handled without a person", "#292524"),
 )
-INK, MUTED, GRID, SURFACE = "#fafafa", "#c4c4c4", "#303030", "#161616"
+INK, MUTED, GRID, SURFACE = "#292524", "#6f6964", "#e7e5e4", "#f3f2f1"
 WIDTH, HEIGHT = 720, 420
 LEFT, RIGHT, TOP, BOTTOM = 56, 190, 92, 56
 MIN_LABEL_GAP = 18
@@ -39,7 +39,7 @@ def render(
 
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {WIDTH} {HEIGHT}" role="img" '
-        f'aria-label="{escape(title)}" font-family="Helvetica, Arial, sans-serif">',
+        f'aria-label="{escape(title)}" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">',
         f'<rect width="{WIDTH}" height="{HEIGHT}" fill="{SURFACE}"/>',
         text(LEFT, 30, title, 18, INK),
         text(LEFT, 52, subtitle, 13, MUTED),
