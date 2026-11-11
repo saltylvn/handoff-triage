@@ -1,5 +1,5 @@
 [project]
-name = "human-in-the-loop-triage"
+name = "handoff-triage"
 version = "0.1.0"
 description = "Contact-us triage: LLM classification, enrichment, HubSpot, Slack, with human approval below a confidence threshold."
 requires-python = ">=3.13"

@@ -1,5 +1,5 @@
 {
-  "name": "inbound-triage-agent",
+  "name": "handoff-triage",
   "srcDir": "src",
   "platformVersion": "2026.09"
 }

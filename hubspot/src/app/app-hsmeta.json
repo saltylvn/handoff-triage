@@ -3,7 +3,7 @@
   "type": "app",
   "config": {
     "description": "Triages contact form messages and updates contacts, with human approval for risky cases. Portfolio project using synthetic data.",
-    "name": "Inbound Triage Agent",
+    "name": "Handoff Triage",
     "distribution": "private",
     "auth": {
       "type": "oauth",

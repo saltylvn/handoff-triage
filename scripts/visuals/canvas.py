@@ -20,7 +20,7 @@ GREEN, GREEN_DOT, AMBER, RED_DOT = "#0b7a3b", "#00c950", "#f0a020", "#fb2c36"
 
 SANS = "'Helvetica Now Display', 'Helvetica Neue', Helvetica, Arial, sans-serif"
 MONO = "'SF Mono Local', 'Geist Mono', Menlo, monospace"
-URL = "github.com/saltylvn/human-in-the-loop-triage"
+URL = "github.com/saltylvn/handoff-triage"
 SF_MONO = Path(
     "/System/Applications/Utilities/Terminal.app/Contents/Resources/Fonts/SF-Mono-Regular.otf"
 )
@@ -70,7 +70,7 @@ class Canvas:
         tag = topic
         self.rect(M, 40, text_width(tag, 15, True) + 32, 34, "none", PANEL_EDGE, r=17)
         self.text(M + 16, 62, tag, 15, MUTED, MONO)
-        self.text(W - M, 64, "Human-in-the-Loop Triage", 20, MUTED, anchor="end", weight=500)
+        self.text(W - M, 64, "Handoff Triage", 20, MUTED, anchor="end", weight=500)
         for i, (words, color) in enumerate(headline):
             self.text(M, 132 + i * 58, words, 52, color, weight=500, spacing=-1.5)
         self.hub(pill)
@@ -236,8 +236,8 @@ class Canvas:
         self.rect(ix, iy, w - 24, h - 24, WHITE, WHITE_EDGE, r=28, shadow=True)
         self.dot(ix + 40, iy + 50, ACCENT, r=5)
         self.text(ix + 54, iy + 56, "New message on the contact form", 17, SOFT)
-        self.text(ix + 38, iy + 118, "Inbound Triage", 38, INK, weight=500, spacing=-1)
-        self.text(ix + 38, iy + 162, "Agent", 38, INK, weight=500, spacing=-1)
+        self.text(ix + 38, iy + 118, "Handoff", 38, INK, weight=500, spacing=-1)
+        self.text(ix + 38, iy + 162, "Triage", 38, INK, weight=500, spacing=-1)
         for i, (_, name, _color) in enumerate(TILES):
             row, col = divmod(i, 2)
             cx, cy = ix + 38 + col * 158, iy + 196 + row * 48
@@ -314,7 +314,7 @@ def reliability():
         [("Nothing lost, nothing done twice.", INK), ("Failures resume where they stopped.", SOFT)],
         "accepted messages are never lost.",
         "Reliability layer",
-        "System design, the reliability layer. In the middle, the Inbound Triage Agent, connected to Gemini, RDAP, "
+        "System design, the reliability layer. In the middle, Handoff Triage, connected to Gemini, RDAP, "
         "HubSpot and Slack. Around it: five intake checks before the API answers; one SQLite file with four tables; "
         "five detours such as approval, retry and failure; and a step ledger that lets a retry skip finished work.",
     )
