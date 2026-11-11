@@ -39,7 +39,7 @@ class Slide(Canvas):
         self.back, self.front = [], []
         self.rect(M, 40, text_width(tag, 15, True) + 32, 34, "none", PANEL_EDGE, r=17)
         self.text(M + 16, 62, tag, 15, MUTED, MONO)
-        self.text(W - M, 64, "Human-in-the-Loop Triage", 20, MUTED, anchor="end", weight=500)
+        self.text(W - M, 64, "Handoff Triage", 20, MUTED, anchor="end", weight=500)
         for i, (words, color) in enumerate(headline):
             self.text(M, 132 + i * 58, words, 52, color, weight=500, spacing=-1.5)
         if caption:
@@ -499,7 +499,7 @@ def social_preview():
     c = Canvas.__new__(Canvas)
     c.name = "social-preview"
     c.label = (
-        "Human-in-the-Loop Triage: AI reads, code decides, a person approves. Built with Gemini, "
+        "Handoff Triage: AI reads, code decides, a person approves. Built with Gemini, "
         "HubSpot, Slack, Python and FastAPI. 84.3 percent handled alone and 96.6 percent correct "
         "on 70 held-out synthetic messages."
     )
@@ -507,7 +507,7 @@ def social_preview():
     tag = "Human-in-the-loop AI workflow"
     c.rect(56, 52, text_width(tag, 15, True) + 32, 34, "none", PANEL_EDGE, r=17)
     c.text(72, 74, tag, 15, MUTED, MONO)
-    c.text(56, 176, "Human-in-the-Loop", 62, INK, weight=500, spacing=-1.8)
+    c.text(56, 176, "Handoff", 62, INK, weight=500, spacing=-1.8)
     c.text(56, 244, "Triage", 62, INK, weight=500, spacing=-1.8)
     c.text(56, 298, "AI reads. Code decides. A person approves.", 25, SOFT, weight=500)
     cx = 56

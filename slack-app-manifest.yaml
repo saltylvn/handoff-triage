@@ -1,10 +1,10 @@
 # Slack: Create New App > From a manifest. Replace the URL with your tunnel's address.
 display_information:
-  name: Inbound Triage
+  name: Handoff Triage
   description: Triage summaries and approval requests
 features:
   bot_user:
-    display_name: Inbound Triage
+    display_name: Handoff Triage
 settings:
   interactivity:
     is_enabled: true

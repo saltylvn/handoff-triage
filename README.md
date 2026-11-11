@@ -1,6 +1,6 @@
-# Human-in-the-Loop Triage
+# Handoff Triage
 
-[![CI](https://github.com/saltylvn/human-in-the-loop-triage/actions/workflows/ci.yml/badge.svg)](https://github.com/saltylvn/human-in-the-loop-triage/actions/workflows/ci.yml)
+[![CI](https://github.com/saltylvn/handoff-triage/actions/workflows/ci.yml/badge.svg)](https://github.com/saltylvn/handoff-triage/actions/workflows/ci.yml)
 ![Python 3.13](https://img.shields.io/badge/python-3.13-blue)
 ![Strict mypy](https://img.shields.io/badge/mypy-strict-blue)
 ![Coverage 95%](https://img.shields.io/badge/coverage-95%25-brightgreen)
@@ -16,7 +16,7 @@
 
 These are from synthetic test data, so [read the caveats](#evaluation). The workflow has also [run live](#live-run) on HubSpot and Slack test accounts, including a real approval click.
 
-![The Inbound Triage Agent in the middle, connected to Gemini, RDAP, HubSpot and Slack, with its six workflow steps, results on 70 held-out messages, a pending Slack approval and the tools it is built with](docs/assets/overview.png)
+![Handoff Triage in the middle, connected to Gemini, RDAP, HubSpot and Slack, with its six workflow steps, results on 70 held-out messages, a pending Slack approval and the tools it is built with](docs/assets/overview.png)
 
 > **By design:** this is one LLM step inside a deterministic workflow, not a set of autonomous agents, because fixed steps are easier to test, audit and trust.
 
